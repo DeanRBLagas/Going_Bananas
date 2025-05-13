@@ -13,8 +13,9 @@ public class Player : MonoBehaviour
     [Header("Jumping")]
     [SerializeField] private float maxJumpForce = 22f; // Jump force of the player
     private float jumpForce = 22f; // Jump force of the player
-    public float maxJumps = 1f; // Maximum time the player can jump
-    public float jumpsRemaining; // Store the number of jumps performed
+    public float doubleJumpForce = 10f;
+    public int maxDoubleJumps = 1; // Maximum time the player can jump
+    public int jumpsRemaining; // Store the number of jumps performed
 
     [Header("GroundCheck")]
     [SerializeField] private Transform groundCheck; // Transform to check if the player is on the ground
@@ -110,28 +111,6 @@ public class Player : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (jumpsRemaining < maxJumps)
-        {
-            jumpForce = maxJumpForce / 1.5f; // Set the jump force to half of the maximum jump force
-        }
-        else
-        {
-            jumpForce = maxJumpForce; // Set the jump force to maximum jump force
-        }
-
-        if (jumpsRemaining > 0) // Check if the player can jump
-        {
-            if (context.performed)
-            {
-                jumpsRemaining--; // Decrease the number of jumps remaining
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            }
-            else if (context.canceled) // When jump button is released
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-            }
-        }
-
         if (context.performed && wallJumpTimer > 0) // Check if the player is jumping off a wall
         {
             isWallJumping = true; // Set the player to wall jumping state
@@ -147,6 +126,31 @@ public class Player : MonoBehaviour
             }
 
             Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); // Cancel the wall jump after the wall jump time
+            return;
+        }
+
+        if (isGrounded == true) // Check if the player can jump
+        {
+            if (context.performed)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, maxJumpForce);
+            }
+            else if (context.canceled) // When jump button is released
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+            }
+        }
+        else if (jumpsRemaining > 0)
+        {
+            if (context.performed)
+            {
+                jumpsRemaining--; // Decrease the number of jumps remaining
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
+            }
+            else if (context.canceled) // When jump button is released
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+            }
         }
     }
 
@@ -155,7 +159,7 @@ public class Player : MonoBehaviour
     {
         if (Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer)) // Check if the player is on the ground
         {
-            jumpsRemaining = maxJumps; // Reset the number of jumps remaining
+            jumpsRemaining = maxDoubleJumps; // Reset the number of jumps remaining
             isGrounded = true; // Set the player to grounded state
         }
         else

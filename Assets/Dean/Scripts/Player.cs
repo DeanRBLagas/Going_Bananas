@@ -1,0 +1,199 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class Player : MonoBehaviour
+{
+    [SerializeField] private Rigidbody2D rb; // Store the rigidbody2D component
+    private bool isFacingRight = true; // Check if the player is facing right
+
+    [Header("Movement")]
+    [SerializeField] private float speed = 5f; // Speed of the player
+    private float horizontalMovement; // Store the horizontal movement input
+
+    [Header("Jumping")]
+    [SerializeField] private float maxJumpForce = 22f; // Jump force of the player
+    private float jumpForce = 22f; // Jump force of the player
+    public float maxJumps = 1f; // Maximum time the player can jump
+    public float jumpsRemaining; // Store the number of jumps performed
+
+    [Header("GroundCheck")]
+    [SerializeField] private Transform groundCheck; // Transform to check if the player is on the ground
+    [SerializeField] private Vector2 groundCheckSize = new Vector2(0.1f, 0.01f); // Size of the ground check area
+    [SerializeField] private LayerMask groundLayer; // Layer mask to check for ground
+    private bool isGrounded; // Check if the player is on the ground
+
+    [Header("Gravity")]
+    [SerializeField] private float baseGravity = 2f; // Base gravity of the player
+    [SerializeField] private float maxFallSpeed = 15f; // Maximum fall speed of the player
+    [SerializeField] private float fallSpeedMultiplier = 2f; // Multiplier for fall gravity
+
+    [Header("WallCheck")]
+    [SerializeField] private Transform wallCheck; // Transform to check if the player is on the ground
+    [SerializeField] private Vector2 wallCheckSize = new Vector2(0.1f, 0.01f); // Size of the ground check area
+    [SerializeField] private LayerMask wallLayer; // Layer mask to check for ground
+
+    [Header("WallMovement")]
+    [SerializeField] private float wallSlideSpeed = 2f; // Speed of the player when sliding on a wall
+    [SerializeField] private bool isWallSliding; // Gravity of the player when sliding on a wall
+
+    private bool isWallJumping; // Check if the player is jumping
+    private float wallJumpDirection; // Store the direction of the wall jump
+    [SerializeField] private float wallJumpTime = 0.5f; // Store the time of the wall jump
+    private float wallJumpTimer; // Store the time of the wall jump
+    [SerializeField] private Vector2 wallJumpPower = new Vector2(5, 22); // Cooldown time for the wall
+
+    private void Update()
+    {
+        GroundCheck(); // Call the ground check method to check if the player is on the ground
+        Gravity(); // Call the gravity method to apply gravity to the player
+        WallSlide(); // Call the wall slide method to check if the player is sliding on a wall
+        ProcessWallJump(); // Call the wall jump method to check if the player is jumping off a wall
+
+        if (!isWallJumping) // Check if the player is not jumping off a wall
+        {
+            rb.linearVelocity = new Vector2(horizontalMovement * speed, rb.linearVelocity.y); // Set the velocity of the player
+            Flip(); // Call the flip method to check if the player needs to change direction
+        }
+    }
+
+    private void Gravity()
+    {
+        if (rb.linearVelocity.y < 0) // Check if the player is falling
+        {
+            rb.gravityScale = baseGravity * fallSpeedMultiplier; // Increase gravity when falling
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed)); // Limit the fall speed
+        }
+        else
+        {
+            rb.gravityScale = baseGravity; // Reset gravity to base value
+        }
+    }
+
+    private void WallSlide()
+    {
+        if (!isGrounded && WallCheck() && horizontalMovement != 0) // Check if the player is sliding on a wall
+        {
+            isWallSliding = true; // Set the player to wall sliding state
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -wallSlideSpeed)); // Set the velocity of the player when sliding on a wall
+        }
+        else // If the player is not sliding anymore
+        {
+            isWallSliding = false; // Reset the wall sliding state
+        }
+    }
+
+    private void ProcessWallJump()
+    {
+        if (isWallSliding) // Check if the player is sliding on a wall
+        {
+            isWallSliding = false; // Reset the wall sliding state
+            wallJumpDirection = -transform.localScale.x; // Set the wall jump direction to the opposite of the player's facing direction
+            wallJumpTimer = wallJumpTime; // Set the wall jump timer to the wall jump time
+
+            CancelInvoke(nameof(CancelWallJump)); // Cancel the wall jump timer
+        }
+        else if (wallJumpTimer > 0) // If the player is not sliding anymore
+        {
+            wallJumpTimer -= Time.deltaTime; // Decrease the wall jump timer
+        }
+    }
+
+    private void CancelWallJump()
+    {
+        isWallJumping = false; // Reset the wall jumping state
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        horizontalMovement = context.ReadValue<Vector2>().x; // Read the horizontal movement input
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (jumpsRemaining < maxJumps)
+        {
+            jumpForce = maxJumpForce / 1.5f; // Set the jump force to half of the maximum jump force
+        }
+        else
+        {
+            jumpForce = maxJumpForce; // Set the jump force to maximum jump force
+        }
+
+        if (jumpsRemaining > 0) // Check if the player can jump
+        {
+            if (context.performed)
+            {
+                jumpsRemaining--; // Decrease the number of jumps remaining
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            }
+            else if (context.canceled) // When jump button is released
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+            }
+        }
+
+        if (context.performed && wallJumpTimer > 0) // Check if the player is jumping off a wall
+        {
+            isWallJumping = true; // Set the player to wall jumping state
+            rb.linearVelocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y); // Set the velocity of the player when jumping
+            wallJumpTimer = 0; // Reset the wall jump timer
+
+            if (transform.localScale.x != wallJumpDirection) // Check if the player is facing right
+            {
+                isFacingRight = !isFacingRight; // Set the player to face left
+                Vector3 scale = transform.localScale; // Get the current scale of the player
+                scale.x *= -1; // Flip the x scale to change direction
+                transform.localScale = scale; // Apply the new scale to the player
+            }
+
+            Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); // Cancel the wall jump after the wall jump time
+        }
+    }
+
+
+    private void GroundCheck()
+    {
+        if (Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer)) // Check if the player is on the ground
+        {
+            jumpsRemaining = maxJumps; // Reset the number of jumps remaining
+            isGrounded = true; // Set the player to grounded state
+        }
+        else
+        {
+            isGrounded = false; // Set the player to not grounded state
+        }
+    }
+
+    private bool WallCheck()
+    {
+        return Physics2D.OverlapBox(wallCheck.position, wallCheckSize, 0f, wallLayer); // Check if the player is touching a wall
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0) // Check if the player is facing right
+        {
+            isFacingRight = !isFacingRight; // Set the player to face left
+            Vector3 scale = transform.localScale; // Get the current scale of the player
+            scale.x *= -1; // Flip the x scale to change direction
+            transform.localScale = scale; // Apply the new scale to the player
+        }
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.performed) // Check if the attack input is performed
+        {
+            // Perform attack logic here
+            Debug.Log("Attack performed."); // Log the attack action
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(groundCheck.position, groundCheckSize); // Draw a wire cube for the ground check area
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(wallCheck.position, wallCheckSize); // Draw a wire cube for the wall check area
+    }
+}

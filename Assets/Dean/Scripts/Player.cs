@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,11 +9,14 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float speed = 5f; // Speed of the player
+    [SerializeField] private float dashSpeed = 20f;
+    [SerializeField] private float dashCooldown = 5f;
     private float horizontalMovement; // Store the horizontal movement input
+    private bool hasDashed;
+    private bool isDashing;
 
     [Header("Jumping")]
-    [SerializeField] private float maxJumpForce = 22f; // Jump force of the player
-    private float jumpForce = 22f; // Jump force of the player
+    public float maxJumpForce = 22f; // Jump force of the player
     public float doubleJumpForce = 10f;
     public int maxDoubleJumps = 1; // Maximum time the player can jump
     public int jumpsRemaining; // Store the number of jumps performed
@@ -35,13 +39,16 @@ public class Player : MonoBehaviour
 
     [Header("WallMovement")]
     [SerializeField] private float wallSlideSpeed = 2f; // Speed of the player when sliding on a wall
-    [SerializeField] private bool isWallSliding; // Gravity of the player when sliding on a wall
-
-    private bool isWallJumping; // Check if the player is jumping
-    private float wallJumpDirection; // Store the direction of the wall jump
     [SerializeField] private float wallJumpTime = 0.5f; // Store the time of the wall jump
-    private float wallJumpTimer; // Store the time of the wall jump
     [SerializeField] private Vector2 wallJumpPower = new Vector2(5, 22); // Cooldown time for the wall
+    private float wallJumpTimer; // Store the time of the wall jump
+    public bool isWallJumping; // Check if the player is jumping
+    public float wallJumpDirection; // Store the direction of the wall jump
+    private bool isWallSliding; // Gravity of the player when sliding on a wall
+
+    [Header("Attack")]
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform SpawnPos;
 
     private void Update()
     {
@@ -50,7 +57,7 @@ public class Player : MonoBehaviour
         WallSlide(); // Call the wall slide method to check if the player is sliding on a wall
         ProcessWallJump(); // Call the wall jump method to check if the player is jumping off a wall
 
-        if (!isWallJumping) // Check if the player is not jumping off a wall
+        if (!isWallJumping && !isDashing) // Check if the player is not jumping off a wall
         {
             rb.linearVelocity = new Vector2(horizontalMovement * speed, rb.linearVelocity.y); // Set the velocity of the player
             Flip(); // Call the flip method to check if the player needs to change direction
@@ -59,14 +66,17 @@ public class Player : MonoBehaviour
 
     private void Gravity()
     {
-        if (rb.linearVelocity.y < 0) // Check if the player is falling
+        if (!isDashing)
         {
-            rb.gravityScale = baseGravity * fallSpeedMultiplier; // Increase gravity when falling
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed)); // Limit the fall speed
-        }
-        else
-        {
-            rb.gravityScale = baseGravity; // Reset gravity to base value
+            if (rb.linearVelocity.y < 0) // Check if the player is falling
+            {
+                rb.gravityScale = baseGravity * fallSpeedMultiplier; // Increase gravity when falling
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed)); // Limit the fall speed
+            }
+            else
+            {
+                rb.gravityScale = baseGravity; // Reset gravity to base value
+            }
         }
     }
 
@@ -83,30 +93,50 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ProcessWallJump()
-    {
-        if (isWallSliding) // Check if the player is sliding on a wall
-        {
-            isWallSliding = false; // Reset the wall sliding state
-            wallJumpDirection = -transform.localScale.x; // Set the wall jump direction to the opposite of the player's facing direction
-            wallJumpTimer = wallJumpTime; // Set the wall jump timer to the wall jump time
-
-            CancelInvoke(nameof(CancelWallJump)); // Cancel the wall jump timer
-        }
-        else if (wallJumpTimer > 0) // If the player is not sliding anymore
-        {
-            wallJumpTimer -= Time.deltaTime; // Decrease the wall jump timer
-        }
-    }
-
-    private void CancelWallJump()
-    {
-        isWallJumping = false; // Reset the wall jumping state
-    }
-
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x; // Read the horizontal movement input
+    }
+
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if (context.performed && !hasDashed && horizontalMovement != 0)
+        {
+            StartCoroutine(PerformDash());
+        }
+    }
+
+    private IEnumerator PerformDash()
+    {
+        hasDashed = true;
+        isDashing = true;
+
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0;
+
+        Vector2 dashDirection = new Vector2(isFacingRight ? 1 : -1, 0);
+        rb.linearVelocity = dashDirection * dashSpeed;
+
+        yield return new WaitForSeconds(0.2f); // Dash duration
+        isDashing = false;
+
+        rb.gravityScale = originalGravity;
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Stop horizontal movement after dash
+
+        yield return new WaitForSeconds(dashCooldown); // Cooldown time
+        hasDashed = false;
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0) // Check if the player is facing right
+        {
+            isFacingRight = !isFacingRight; // Set the player to face left
+            transform.rotation = horizontalMovement < 0 ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;
+            //Vector3 scale = transform.localScale; // Get the current scale of the player
+            //scale.x *= -1; // Flip the x scale to change direction
+            //transform.localScale = scale; // Apply the new scale to the player
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -114,17 +144,19 @@ public class Player : MonoBehaviour
         if (context.performed && wallJumpTimer > 0) // Check if the player is jumping off a wall
         {
             isWallJumping = true; // Set the player to wall jumping state
-            rb.linearVelocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y); // Set the velocity of the player when jumping
+            int direction = wallJumpDirection == 180 ? 1 : -1;
+            rb.linearVelocity = new Vector2(direction * wallJumpPower.x, wallJumpPower.y); // Set the velocity of the player when jumping
             wallJumpTimer = 0; // Reset the wall jump timer
 
-            if (transform.localScale.x != wallJumpDirection) // Check if the player is facing right
+            bool shouldFlip = (wallJumpDirection == 180 && !isFacingRight) || (wallJumpDirection == 0 && isFacingRight);
+            if (shouldFlip) // Check if the player is facing right
             {
                 isFacingRight = !isFacingRight; // Set the player to face left
-                Vector3 scale = transform.localScale; // Get the current scale of the player
-                scale.x *= -1; // Flip the x scale to change direction
-                transform.localScale = scale; // Apply the new scale to the player
+                transform.rotation = horizontalMovement < 0 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+                //Vector3 scale = transform.localScale; // Get the current scale of the player
+                //scale.x *= -1; // Flip the x scale to change direction
+                //transform.localScale = scale; // Apply the new scale to the player
             }
-
             Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); // Cancel the wall jump after the wall jump time
             return;
         }
@@ -154,7 +186,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     private void GroundCheck()
     {
         if (Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer)) // Check if the player is on the ground
@@ -173,23 +204,35 @@ public class Player : MonoBehaviour
         return Physics2D.OverlapBox(wallCheck.position, wallCheckSize, 0f, wallLayer); // Check if the player is touching a wall
     }
 
-    private void Flip()
+    private void ProcessWallJump()
     {
-        if (isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0) // Check if the player is facing right
+        if (isWallSliding) // Check if the player is sliding on a wall
         {
-            isFacingRight = !isFacingRight; // Set the player to face left
-            Vector3 scale = transform.localScale; // Get the current scale of the player
-            scale.x *= -1; // Flip the x scale to change direction
-            transform.localScale = scale; // Apply the new scale to the player
+            isWallSliding = false; // Reset the wall sliding state
+            wallJumpDirection = horizontalMovement < 0 ? 180 : 0; // Set the wall jump direction to the opposite of the player's facing direction
+            wallJumpTimer = wallJumpTime; // Set the wall jump timer to the wall jump time
+
+            CancelInvoke(nameof(CancelWallJump)); // Cancel the wall jump timer
         }
+        else if (wallJumpTimer > 0) // If the player is not sliding anymore
+        {
+            wallJumpTimer -= Time.deltaTime; // Decrease the wall jump timer
+        }
+    }
+
+    private void CancelWallJump()
+    {
+        isWallJumping = false; // Reset the wall jumping state
     }
 
     public void Attack(InputAction.CallbackContext context)
     {
         if (context.performed) // Check if the attack input is performed
         {
-            // Perform attack logic here
-            Debug.Log("Attack performed."); // Log the attack action
+            if (projectilePrefab != null)
+            {
+                Instantiate(projectilePrefab, SpawnPos.position, transform.rotation);
+            }
         }
     }
 

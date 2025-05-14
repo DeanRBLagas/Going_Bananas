@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bananna_DefaultMaterial_BaseMap_0: 3698258815337865552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -105,6 +105,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   speed: 10
   arcHeight: 1
+  knockbackForce: 10
 --- !u!58 &1577498845296198826
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

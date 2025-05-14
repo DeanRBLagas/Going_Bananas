@@ -1869,6 +1869,8 @@ MonoBehaviour:
   wallJumpDirection: 0
   projectilePrefab: {fileID: 3976927219132049613, guid: 5c2da8a08b495154a87d19c5b2cef647, type: 3}
   SpawnPos: {fileID: 1551700112}
+  knockbackDuration: 2
+  knockbackRecoveryTime: 0.1
 --- !u!1 &1767371201
 GameObject:
   m_ObjectHideFlags: 0

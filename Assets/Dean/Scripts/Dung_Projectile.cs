@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class Dung_Projectile : MonoBehaviour
 {
-    [Tooltip("Position we want to hit")]
     public Vector3 targetPos;
-
-    [Tooltip("Horizontal speed, in units/sec")]
     public float speed = 10;
-
-    [Tooltip("How high the arc should be, in units")]
     public float arcHeight = 1;
+    public float knockbackForce = 10f;
 
 
     Vector3 startPos;
@@ -53,14 +49,14 @@ public class Dung_Projectile : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            Debug.Log("Hit player.");
+            Player player = collision.GetComponent<Player>();
+            if (player != null)
             {
                 Vector2 knockbackDir = (collision.transform.position - transform.position).normalized;
-                float knockbackForce = 5f;
-                rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
+                player.ApplyKnockback(knockbackDir * knockbackForce);
             }
+            Arrived();
         }
-        Arrived();
     }
 }

@@ -50,12 +50,28 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform SpawnPos;
 
+    [Header("Knockback")]
+    [SerializeField] private float knockbackDuration = 0.2f;
+    [SerializeField] private float knockbackRecoveryTime = 0.1f;
+    private bool isKnockedBack;
+    private float knockbackTimer;
+
     private void Update()
     {
         GroundCheck(); // Call the ground check method to check if the player is on the ground
         Gravity(); // Call the gravity method to apply gravity to the player
         WallSlide(); // Call the wall slide method to check if the player is sliding on a wall
         ProcessWallJump(); // Call the wall jump method to check if the player is jumping off a wall
+
+        if (isKnockedBack)
+        {
+            knockbackTimer -= Time.deltaTime;
+            if (knockbackTimer <= 0f)
+            {
+                isKnockedBack = false;
+            }
+            return; // Skip movement while knocked back
+        }
 
         if (!isWallJumping && !isDashing) // Check if the player is not jumping off a wall
         {
@@ -234,6 +250,13 @@ public class Player : MonoBehaviour
                 Instantiate(projectilePrefab, SpawnPos.position, transform.rotation);
             }
         }
+    }
+
+    public void ApplyKnockback(Vector2 force)
+    {
+        rb.linearVelocity = force;
+        isKnockedBack = true;
+        knockbackTimer = knockbackDuration;
     }
 
     private void OnDrawGizmosSelected()

@@ -47,8 +47,8 @@ public class Dung_Beetle : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        Instantiate(projectilePrefab, transform.position + transform.right * 1f, transform.rotation);
         yield return new WaitForSeconds(attackInterval);
+        Instantiate(projectilePrefab, transform.position + transform.right * 1f, transform.rotation);
         attackCoroutine = StartCoroutine(Attack());
     }
 }

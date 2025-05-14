@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bananna_DefaultMaterial_MetallicSmoothness_0: -5768654778475972107
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

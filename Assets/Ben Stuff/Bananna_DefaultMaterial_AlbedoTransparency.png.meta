@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bananna_DefaultMaterial_AlbedoTransparency_0: -2226380824228165864
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

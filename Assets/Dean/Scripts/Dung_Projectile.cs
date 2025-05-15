@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Dung_Projectile : MonoBehaviour
 {
-    public Vector3 targetPos;
-    public float speed = 10;
-    public float arcHeight = 1;
-    public float knockbackForce = 10f;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float arcHeight = 1f;
+    [SerializeField] private float knockbackForce = 10f;
+    [SerializeField] private int damage = 1;
 
-
-    Vector3 startPos;
+    private Vector3 targetPos;
+    private Vector3 startPos;
 
     void Start()
     {
@@ -16,7 +16,8 @@ public class Dung_Projectile : MonoBehaviour
         Transform player = FindFirstObjectByType<Player>()?.transform;
         if (player != null)
         {
-            targetPos = player.position;
+            targetPos = new Vector3(player.position.x, startPos.y, startPos.z);
+            arcHeight = Mathf.Max(arcHeight, player.position.y - startPos.y);
         }
     }
 
@@ -30,8 +31,7 @@ public class Dung_Projectile : MonoBehaviour
         float arc = arcHeight * (nextX - x0) * (nextX - x1) / (-0.25f * dist * dist);
         Vector3 nextPos = new Vector3(nextX, baseY + arc, transform.position.z);
 
-        transform.rotation = LookAt2D(nextPos - transform.position);
-        transform.position = nextPos;
+        transform.SetPositionAndRotation(nextPos, LookAt2D(nextPos - transform.position));
 
         if (nextPos == targetPos) Arrived();
     }
@@ -49,12 +49,13 @@ public class Dung_Projectile : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Hit player.");
             Player player = collision.GetComponent<Player>();
             if (player != null)
             {
                 Vector2 knockbackDir = (collision.transform.position - transform.position).normalized;
                 player.ApplyKnockback(knockbackDir * knockbackForce);
+                IDamageable damageable = collision.GetComponent<IDamageable>();
+                damageable?.TakeDamage(damage);
             }
             Arrived();
         }

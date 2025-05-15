@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class Dung_Beetle : MonoBehaviour
+public class Dung_Beetle : MonoBehaviour, IDamageable
 {
+    [SerializeField] private int health;
     [SerializeField] private Vector2 detectionDistance = new Vector2(5f, 3f);
     [SerializeField] private float attackInterval;
     [SerializeField] private GameObject projectilePrefab;
@@ -33,10 +34,7 @@ public class Dung_Beetle : MonoBehaviour
         if (hasDetected)
         {
             transform.rotation = playerPos.position.x < transform.position.x ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;
-            if (attackCoroutine == null)
-            {
-                attackCoroutine = StartCoroutine(Attack());
-            }
+            attackCoroutine ??= StartCoroutine(Attack());
         }
         else if (!hasDetected && attackCoroutine != null)
         {
@@ -50,5 +48,19 @@ public class Dung_Beetle : MonoBehaviour
         yield return new WaitForSeconds(attackInterval);
         Instantiate(projectilePrefab, transform.position + transform.right * 1f, transform.rotation);
         attackCoroutine = StartCoroutine(Attack());
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

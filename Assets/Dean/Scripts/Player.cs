@@ -2,9 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private Rigidbody2D rb; // Store the rigidbody2D component
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
     private bool isFacingRight = true; // Check if the player is facing right
 
     [Header("Movement")]
@@ -46,15 +48,15 @@ public class Player : MonoBehaviour
     public float wallJumpDirection; // Store the direction of the wall jump
     private bool isWallSliding; // Gravity of the player when sliding on a wall
 
-    [Header("Attack")]
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform SpawnPos;
-
     [Header("Knockback")]
     [SerializeField] private float knockbackDuration = 0.2f;
-    [SerializeField] private float knockbackRecoveryTime = 0.1f;
     private bool isKnockedBack;
     private float knockbackTimer;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     private void Update()
     {
@@ -241,22 +243,25 @@ public class Player : MonoBehaviour
         isWallJumping = false; // Reset the wall jumping state
     }
 
-    public void Attack(InputAction.CallbackContext context)
-    {
-        if (context.performed) // Check if the attack input is performed
-        {
-            if (projectilePrefab != null)
-            {
-                Instantiate(projectilePrefab, SpawnPos.position, transform.rotation);
-            }
-        }
-    }
-
     public void ApplyKnockback(Vector2 force)
     {
         rb.linearVelocity = force;
         isKnockedBack = true;
         knockbackTimer = knockbackDuration;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+
     }
 
     private void OnDrawGizmosSelected()

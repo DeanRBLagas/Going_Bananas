@@ -3,6 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private int damage = 1;
 
     private void Start()
     {
@@ -16,6 +17,8 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        damageable?.TakeDamage(damage);
         Destroy(gameObject);
     }
 }

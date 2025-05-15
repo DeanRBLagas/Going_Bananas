@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5509004364042474354}
   - component: {fileID: 8088512570956313212}
+  - component: {fileID: -625515928022290412}
   - component: {fileID: 5391656260846540646}
   - component: {fileID: 7147024460976748778}
   m_Layer: 0
@@ -89,6 +90,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-625515928022290412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900864543200327535}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0125d24800ee443af230ee172b7401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  detectionDistance: 0.5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 192
 --- !u!50 &5391656260846540646
 Rigidbody2D:
   serializedVersion: 5
@@ -108,13 +126,13 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7147024460976748778
 BoxCollider2D:

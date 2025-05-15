@@ -673,15 +673,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceBetween: 0.45
-  speed: 100
-  turnSpeed: 180
+  speed: 5
+  turnInterval: 2
   bodyParts:
   - {fileID: 900864543200327535, guid: 0bea45d84aafb1a42bdc9a649e263730, type: 3}
-  - {fileID: 900864543200327535, guid: 0bea45d84aafb1a42bdc9a649e263730, type: 3}
-  - {fileID: 900864543200327535, guid: 0bea45d84aafb1a42bdc9a649e263730, type: 3}
-  - {fileID: 900864543200327535, guid: 0bea45d84aafb1a42bdc9a649e263730, type: 3}
-  - {fileID: 900864543200327535, guid: 0bea45d84aafb1a42bdc9a649e263730, type: 3}
-  goingUp: 0
+  - {fileID: 2869948665212728052, guid: f21d7549e23b4734489b4d1d6110b88c, type: 3}
+  - {fileID: 2869948665212728052, guid: f21d7549e23b4734489b4d1d6110b88c, type: 3}
+  - {fileID: 2869948665212728052, guid: f21d7549e23b4734489b4d1d6110b88c, type: 3}
+  - {fileID: 2869948665212728052, guid: f21d7549e23b4734489b4d1d6110b88c, type: 3}
 --- !u!4 &478511413
 Transform:
   m_ObjectHideFlags: 0
@@ -691,7 +690,7 @@ Transform:
   m_GameObject: {fileID: 478511411}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.14491, y: 9.48, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

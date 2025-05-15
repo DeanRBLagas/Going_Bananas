@@ -194,11 +194,11 @@ MonoBehaviour:
   rb: {fileID: 1426961737620137098}
   maxHealth: 50
   currentHealth: 0
-  speed: 5
-  dashSpeed: 20
+  speed: 10
+  dashSpeed: 35
   dashCooldown: 1
-  maxJumpForce: 15
-  doubleJumpForce: 10
+  maxJumpForce: 20
+  doubleJumpForce: 15
   maxDoubleJumps: 2
   jumpsRemaining: 0
   groundCheck: {fileID: 7023688325062077296}
@@ -207,7 +207,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   baseGravity: 5
-  maxFallSpeed: 15
+  maxFallSpeed: 20
   fallSpeedMultiplier: 2
   wallCheck: {fileID: 7980609866427551072}
   wallCheckSize: {x: 0.01, y: 1}
@@ -216,7 +216,7 @@ MonoBehaviour:
     m_Bits: 128
   wallSlideSpeed: 2
   wallJumpTime: 0.1
-  wallJumpPower: {x: 5, y: 15}
+  wallJumpPower: {x: 15, y: 30}
   isWallJumping: 0
   wallJumpDirection: 0
   knockbackDuration: 0.1

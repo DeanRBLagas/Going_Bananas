@@ -196,7 +196,7 @@ MonoBehaviour:
   currentHealth: 0
   speed: 10
   dashSpeed: 35
-  dashCooldown: 1
+  dashCooldown: 5
   maxJumpForce: 20
   doubleJumpForce: 15
   maxDoubleJumps: 2
@@ -219,7 +219,7 @@ MonoBehaviour:
   wallJumpPower: {x: 15, y: 30}
   isWallJumping: 0
   wallJumpDirection: 0
-  knockbackDuration: 0.1
+  knockbackDuration: 0.2
 --- !u!212 &723011907421762692
 SpriteRenderer:
   m_ObjectHideFlags: 0

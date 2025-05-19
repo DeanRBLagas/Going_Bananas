@@ -10,8 +10,8 @@ public class SnakeManager : MonoBehaviour
     private List<GameObject> snakeBody = new List<GameObject>();
     private float countUp;
     private float turnTimer;
-
     private Vector2 currentDirection = Vector2.right;
+    private GameObject head;
 
     private void Start()
     {
@@ -58,11 +58,11 @@ public class SnakeManager : MonoBehaviour
     {
         if (snakeBody.Count == 0)
         {
-            GameObject temp1 = Instantiate(bodyParts[0], transform.position, transform.rotation, transform);
-            SnakeHead head = temp1.GetComponent<SnakeHead>();
-            head.manager = this;
-            SetupBodyPart(temp1);
-            snakeBody.Add(temp1);
+            head = Instantiate(bodyParts[0], transform.position, transform.rotation, transform);
+            SnakeHead sHead = head.GetComponent<SnakeHead>();
+            sHead.manager = this;
+            SetupBodyPart(head);
+            snakeBody.Add(head);
             bodyParts.RemoveAt(0);
         }
 
@@ -75,7 +75,7 @@ public class SnakeManager : MonoBehaviour
         countUp += Time.deltaTime;
         if (countUp >= distanceBetween && bodyParts.Count > 0 && markerM.markerList.Count > 0)
         {
-            GameObject temp = Instantiate(bodyParts[0], markerM.markerList[0].position, markerM.markerList[0].rotation, transform);
+            GameObject temp = Instantiate(bodyParts[0], markerM.markerList[0].position, markerM.markerList[0].rotation, head.transform);
             SetupBodyPart(temp);
             snakeBody.Add(temp);
             bodyParts.RemoveAt(0);

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private Transform groundCheck; // Transform to check if the player is on the ground
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.1f, 0.01f); // Size of the ground check area
     [SerializeField] private LayerMask groundLayer; // Layer mask to check for ground
-    private bool isGrounded; // Check if the player is on the ground
+    public bool isGrounded; // Check if the player is on the ground
 
     [Header("Gravity")]
     [SerializeField] private float baseGravity = 2f; // Base gravity of the player
@@ -44,10 +45,10 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float wallSlideSpeed = 2f; // Speed of the player when sliding on a wall
     [SerializeField] private float wallJumpTime = 0.5f; // Store the time of the wall jump
     [SerializeField] private Vector2 wallJumpPower = new Vector2(5, 22); // Cooldown time for the wall
-    private float wallJumpTimer; // Store the time of the wall jump
+    public float wallJumpTimer; // Store the time of the wall jump
     public bool isWallJumping; // Check if the player is jumping
     public float wallJumpDirection; // Store the direction of the wall jump
-    private bool isWallSliding; // Gravity of the player when sliding on a wall
+    public bool isWallSliding; // Gravity of the player when sliding on a wall
 
     [Header("Knockback")]
     [SerializeField] private float knockbackDuration = 0.2f;
@@ -151,10 +152,10 @@ public class Player : MonoBehaviour, IDamageable
         if (isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0) // Check if the player is facing right
         {
             isFacingRight = !isFacingRight; // Set the player to face left
-            transform.rotation = horizontalMovement < 0 ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;
-            //Vector3 scale = transform.localScale; // Get the current scale of the player
-            //scale.x *= -1; // Flip the x scale to change direction
-            //transform.localScale = scale; // Apply the new scale to the player
+            //transform.rotation = horizontalMovement < 0 ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;
+            Vector3 scale = transform.localScale; // Get the current scale of the player
+            scale.x *= -1; // Flip the x scale to change direction
+            transform.localScale = scale; // Apply the new scale to the player
         }
     }
 
@@ -171,10 +172,10 @@ public class Player : MonoBehaviour, IDamageable
             if (shouldFlip) // Check if the player is facing right
             {
                 isFacingRight = !isFacingRight; // Set the player to face left
-                transform.rotation = horizontalMovement < 0 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
-                //Vector3 scale = transform.localScale; // Get the current scale of the player
-                //scale.x *= -1; // Flip the x scale to change direction
-                //transform.localScale = scale; // Apply the new scale to the player
+                //transform.rotation = horizontalMovement < 0 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+                Vector3 scale = transform.localScale; // Get the current scale of the player
+                scale.x *= -1; // Flip the x scale to change direction
+                transform.localScale = scale; // Apply the new scale to the player
             }
             Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); // Cancel the wall jump after the wall jump time
             return;
@@ -211,6 +212,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             jumpsRemaining = maxDoubleJumps; // Reset the number of jumps remaining
             isGrounded = true; // Set the player to grounded state
+            isWallJumping = false;
         }
         else
         {
@@ -235,7 +237,7 @@ public class Player : MonoBehaviour, IDamageable
         }
         else if (wallJumpTimer > 0) // If the player is not sliding anymore
         {
-            wallJumpTimer -= Time.deltaTime; // Decrease the wall jump timer
+            wallJumpTimer = Mathf.Max(0f, wallJumpTimer - Time.deltaTime); // Decrease the wall jump timer
         }
     }
 

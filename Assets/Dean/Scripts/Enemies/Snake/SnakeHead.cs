@@ -1,9 +1,10 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SnakeHead : MonoBehaviour
+public class SnakeHead : MonoBehaviour, IDamageable
 {
     public SnakeManager manager;
+    [SerializeField] private int health;
     [SerializeField] private Transform checkPos;
     [SerializeField] private Vector2 checkSize = new Vector2(0.1f, 0.01f);
     [SerializeField] private LayerMask obstacleLayer;
@@ -29,5 +30,18 @@ public class SnakeHead : MonoBehaviour
             IDamageable damageable = collision.GetComponent<IDamageable>();
             damageable?.TakeDamage(damage);
         }
+    }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

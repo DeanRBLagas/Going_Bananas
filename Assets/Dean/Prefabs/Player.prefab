@@ -206,7 +206,8 @@ MonoBehaviour:
   groundCheckSize: {x: 1, y: 0.01}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2112
+  isGrounded: 0
   baseGravity: 5
   maxFallSpeed: 20
   fallSpeedMultiplier: 2
@@ -218,8 +219,10 @@ MonoBehaviour:
   wallSlideSpeed: 2
   wallJumpTime: 0.1
   wallJumpPower: {x: 15, y: 30}
+  wallJumpTimer: 0
   isWallJumping: 0
   wallJumpDirection: 0
+  isWallSliding: 0
   knockbackDuration: 0.2
 --- !u!212 &723011907421762692
 SpriteRenderer:

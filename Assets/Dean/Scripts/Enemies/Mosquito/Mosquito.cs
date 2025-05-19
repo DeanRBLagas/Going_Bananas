@@ -13,6 +13,7 @@ public class Mosquito : MonoBehaviour, IDamageable
     private bool hasDetected;
     private Transform playerPos;
     private Coroutine attackCoroutine;
+    private bool hasAttacked;
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class Mosquito : MonoBehaviour, IDamageable
         bool withinVerticalRange = Mathf.Abs(diff.y) <= detectionDistance.y;
 
         hasDetected = withinHorizontalRange && withinVerticalRange;
-        if (hasDetected)
+        if (hasDetected && !hasAttacked)
         {
             float distanceToPlayer = diff.magnitude;
 
@@ -58,12 +59,13 @@ public class Mosquito : MonoBehaviour, IDamageable
 
     private IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.1f);
+        hasAttacked = true;
         IDamageable damageable = playerPos.GetComponent<IDamageable>();
         damageable?.TakeDamage(damage);
         StartCoroutine(SlowPlayer());
         yield return new WaitForSeconds(attackInterval);
         attackCoroutine = StartCoroutine(Attack());
+        hasAttacked = false;
     }
 
     private IEnumerator SlowPlayer()

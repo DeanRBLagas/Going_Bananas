@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  arcHeight: 1
+  arcHeight: 0.5
   knockbackForce: 1
 --- !u!58 &7670919863063934143
 CircleCollider2D:

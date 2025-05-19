@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  speed: 4.9
+  speed: 10
   damage: 1
   detectionDistance: {x: 7, y: 7}
   minDistanceToPlayer: 0.75

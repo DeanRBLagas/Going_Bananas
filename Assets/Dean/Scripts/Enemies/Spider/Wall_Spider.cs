@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Wall_Spider : MonoBehaviour
+public class Wall_Spider : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health;
     [SerializeField] private float speed;

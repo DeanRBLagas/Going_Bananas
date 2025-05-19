@@ -30,10 +30,4 @@ public class SnakeHead : MonoBehaviour
             damageable?.TakeDamage(damage);
         }
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(checkPos.position, checkSize);
-    }
 }

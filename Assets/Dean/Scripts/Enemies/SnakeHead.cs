@@ -1,10 +1,13 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SnakeHead : MonoBehaviour
 {
     public SnakeManager manager;
-    public float detectionDistance = 0.5f;  // Distance to look ahead
-    public LayerMask obstacleLayer;         // Layer to detect collisions with
+    [SerializeField] private Transform checkPos;
+    [SerializeField] private Vector2 checkSize = new Vector2(0.1f, 0.01f);
+    [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private int damage;
 
     private void Update()
     {
@@ -13,13 +16,21 @@ public class SnakeHead : MonoBehaviour
 
     private void CheckForObstacles()
     {
-        Vector2 direction = manager.GetCurrentDirection();
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, detectionDistance, obstacleLayer);
-
-        if (hit.collider != null)
+        if (Physics2D.OverlapBox(checkPos.position, checkSize, 0f, obstacleLayer))
         {
-            Debug.Log("Obstacle ahead! Turning.");
             manager.ChangeDirection();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        damageable?.TakeDamage(damage);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(checkPos.position, checkSize);
     }
 }

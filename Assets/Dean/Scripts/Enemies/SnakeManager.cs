@@ -59,6 +59,8 @@ public class SnakeManager : MonoBehaviour
         if (snakeBody.Count == 0)
         {
             GameObject temp1 = Instantiate(bodyParts[0], transform.position, transform.rotation, transform);
+            SnakeHead head = temp1.GetComponent<SnakeHead>();
+            head.manager = this;
             SetupBodyPart(temp1);
             snakeBody.Add(temp1);
             bodyParts.RemoveAt(0);
@@ -110,10 +112,5 @@ public class SnakeManager : MonoBehaviour
 
         float angle = Mathf.Atan2(currentDirection.y, currentDirection.x) * Mathf.Rad2Deg;
         snakeBody[0].transform.rotation = Quaternion.Euler(0, 0, angle);
-    }
-
-    public Vector2 GetCurrentDirection()
-    {
-        return currentDirection;
     }
 }

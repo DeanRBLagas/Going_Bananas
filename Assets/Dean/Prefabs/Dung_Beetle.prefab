@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4449437185375665895}
   - component: {fileID: 6839011991993600455}
   - component: {fileID: 8841215198531621928}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dung_Beetle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

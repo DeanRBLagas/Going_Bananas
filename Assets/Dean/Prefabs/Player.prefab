@@ -210,7 +210,7 @@ MonoBehaviour:
   maxFallSpeed: 20
   fallSpeedMultiplier: 2
   wallCheck: {fileID: 7980609866427551072}
-  wallCheckSize: {x: 0.01, y: 1}
+  wallCheckSize: {x: 0.01, y: 0.5}
   wallLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -10,7 +10,8 @@ public class Player : MonoBehaviour, IDamageable
     private bool isFacingRight = true; // Check if the player is facing right
 
     [Header("Movement")]
-    [SerializeField] private float speed = 5f; // Speed of the player
+    public float maxSpeed = 5f; // Max speed of the player
+    public float speed = 5f; // Speed of the player
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] private float dashCooldown = 5f;
     private float horizontalMovement; // Store the horizontal movement input

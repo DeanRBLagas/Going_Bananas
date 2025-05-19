@@ -24,8 +24,11 @@ public class SnakeHead : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable damageable = collision.GetComponent<IDamageable>();
-        damageable?.TakeDamage(damage);
+        if (collision.CompareTag("Player"))
+        {
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            damageable?.TakeDamage(damage);
+        }
     }
 
     private void OnDrawGizmosSelected()

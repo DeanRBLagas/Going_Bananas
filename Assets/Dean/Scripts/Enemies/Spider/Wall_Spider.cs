@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Spider : MonoBehaviour, IDamageable
+public class Wall_Spider : MonoBehaviour
 {
     [SerializeField] private int health;
     [SerializeField] private float speed;
@@ -56,7 +56,7 @@ public class Spider : MonoBehaviour, IDamageable
         hasDetected = withinHorizontalRange && withinVerticalRange;
         if (hasDetected)
         {
-            transform.rotation = playerPos.position.x < transform.position.x ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;
+            //transform.rotation = playerPos.position.x < transform.position.x ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;
             attackCoroutine ??= StartCoroutine(Attack());
         }
         else if (!hasDetected && attackCoroutine != null)
@@ -70,12 +70,12 @@ public class Spider : MonoBehaviour, IDamageable
     {
         if (Time.time - lastDirectionChangeTime < directionChangeCooldown) return;
 
-        bool ground1 = Physics2D.OverlapBox(check1Pos.position, checkSize1, 0f, walkOnLayer);
-        bool ground2 = Physics2D.OverlapBox(check2Pos.position, checkSize2, 0f, walkOnLayer);
+        bool wall1 = Physics2D.OverlapBox(check1Pos.position, checkSize1, 0f, walkOnLayer);
+        bool wall2 = Physics2D.OverlapBox(check2Pos.position, checkSize2, 0f, walkOnLayer);
         bool other1 = Physics2D.OverlapBox(check1Pos.position, checkSize1, 0f, notWalkOnLayer);
         bool other2 = Physics2D.OverlapBox(check2Pos.position, checkSize2, 0f, notWalkOnLayer);
 
-        if (!ground1 || !ground2 || other1 || other2)
+        if (!wall1 || !wall2 || other1 || other2)
         {
             ChangeDirection();
             lastDirectionChangeTime = Time.time;
@@ -87,7 +87,7 @@ public class Spider : MonoBehaviour, IDamageable
     {
         float interval = (Random.Range(turnInterval.x, turnInterval.y));
         turnTimer = interval;
-        currentDirection = (currentDirection == Vector2.right) ? Vector2.left : Vector2.right;
+        currentDirection = (currentDirection == Vector2.up) ? Vector2.down : Vector2.up;
     }
 
     private IEnumerator Attack()
@@ -109,5 +109,12 @@ public class Spider : MonoBehaviour, IDamageable
     private void Die()
     {
         Destroy(gameObject);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(check1Pos.position, checkSize1);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(check2Pos.position, checkSize2);
     }
 }

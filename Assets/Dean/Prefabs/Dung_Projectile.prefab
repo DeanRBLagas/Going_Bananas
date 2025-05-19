@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4315901191197138523}
   - component: {fileID: 1577498845296198826}
   - component: {fileID: 1244597172308867517}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dung_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dda9e87d8f767c4fbe710a83cf5d75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPos: {x: 0, y: 0, z: 0}
   speed: 10
   arcHeight: 1
   knockbackForce: 10
@@ -165,7 +164,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7449797165079772657}
   - component: {fileID: 3435748662888829384}
   m_Layer: 10
-  m_Name: Spider
+  m_Name: GroundSpider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,9 +111,12 @@ MonoBehaviour:
   check2Pos: {fileID: 6804469454122212518}
   checkSize1: {x: 0.05, y: 0.05}
   checkSize2: {x: 0.05, y: 0.05}
-  obstacleLayer:
+  walkOnLayer:
     serializedVersion: 2
     m_Bits: 64
+  notWalkOnLayer:
+    serializedVersion: 2
+    m_Bits: 128
   detectionDistance: {x: 10, y: 10}
   attackInterval: 1
   projectilePrefab: {fileID: 3835253126152527650, guid: d22026f400ee991428fdc42c13acd926, type: 3}

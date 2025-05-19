@@ -53,7 +53,7 @@ public class Spider_Projectile : MonoBehaviour
                 Vector2 knockbackDir = (collision.transform.position - transform.position).normalized;
                 player.ApplyKnockback(knockbackDir * knockbackForce);
             }
-            Arrived();
         }
+        Arrived();
     }
 }

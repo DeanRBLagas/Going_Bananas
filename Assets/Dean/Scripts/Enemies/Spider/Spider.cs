@@ -23,7 +23,6 @@ public class Spider : MonoBehaviour, IDamageable
     private float directionChangeCooldown = 0.1f;
     private float lastDirectionChangeTime;
 
-
     private void Start()
     {
         playerPos = FindFirstObjectByType<Player>().transform;

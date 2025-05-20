@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: b2a57f94404ab004a90eb7ef5b97bc74
+guid: c35b48737ec10934da36384237cae21a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2285822722698154769
-    second: frontground_gb_0
+      213: -7753702736233424503
+    second: treeandnormalpillars_gb_0
+  - first:
+      213: -2691497044835370229
+    second: treeandnormalpillars_gb_1
+  - first:
+      213: -3246569067410598155
+    second: treeandnormalpillars_gb_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: frontground_gb_0
+      name: treeandnormalpillars_gb_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1280
-        height: 175
+        width: 51
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fec6f0238502740e0800000000000000
-      internalID: -2285822722698154769
+      spriteID: 98915d83170556490800000000000000
+      internalID: -7753702736233424503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: treeandnormalpillars_gb_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
+        width: 50
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0bf298a2b1e5aad0800000000000000
+      internalID: -2691497044835370229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: treeandnormalpillars_gb_2
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 0
+        width: 51
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f6583e52aed1f2d0800000000000000
+      internalID: -3246569067410598155
       vertices: []
       indices: 
       edges: []
@@ -134,8 +184,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      frontground_gb_0: -2285822722698154769
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

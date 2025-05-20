@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 7ada5c27221b2ba49a7e0dd0f2423984
+guid: 3440e7ed65c7386448c67869fdec3aa5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5416085629587378597
-    second: secondground_gb_0
+      213: -4576572726609878101
+    second: gb_tileset_floatingplatforms_0
+  - first:
+      213: 5343791774484001530
+    second: gb_tileset_floatingplatforms_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: secondground_gb_0
+      name: gb_tileset_floatingplatforms_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1280
-        height: 257
+        y: 106
+        width: 150
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5ea857c0d236d4b0800000000000000
-      internalID: -5416085629587378597
+      spriteID: ba36da55a5fbc70c0800000000000000
+      internalID: -4576572726609878101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gb_tileset_floatingplatforms_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 49
+        width: 150
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af2f5c76e46f82a40800000000000000
+      internalID: 5343791774484001530
       vertices: []
       indices: 
       edges: []
@@ -134,8 +159,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      secondground_gb_0: -5416085629587378597
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

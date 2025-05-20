@@ -19,6 +19,7 @@ public class Panther : MonoBehaviour, IDamageable
     [SerializeField] private bool shouldJump;
     [SerializeField] private Transform playerPos;
     [SerializeField] private float timeToTarget = 0.6f;
+    [SerializeField] private float maxHorizontalJump = 1.5f;
 
     private bool hasDetected;
     private Coroutine attackCoroutine;
@@ -43,7 +44,13 @@ public class Panther : MonoBehaviour, IDamageable
 
         float direction = Mathf.Sign(playerPos.position.x - transform.position.x);
 
-        bool isPlayerAbove = Physics2D.Raycast(transform.position, Vector2.up, 10f, 1 << playerPos.gameObject.layer);
+        //bool isPlayerAbove = Physics2D.Raycast(transform.position, Vector2.up, 10f, 1 << playerPos.gameObject.layer);
+        bool isPlayerAbove = false;
+        float diff = playerPos.position.y - transform.position.y;
+        if (diff >= 1)
+        {
+            isPlayerAbove = true;
+        }
 
         if (isGrounded)
         {
@@ -59,12 +66,13 @@ public class Panther : MonoBehaviour, IDamageable
             }
             else if (isPlayerAbove && platformAbove.collider)
             {
-                shouldJump = true;
+                float platformTopY = platformAbove.collider.bounds.max.y;
+                if (playerPos.position.y > platformTopY)
+                {
+                    shouldJump = true;
+                }
             }
-        }
-        else
-        {
-            //rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
         }
         //DetectPlayer();
     }
@@ -78,20 +86,51 @@ public class Panther : MonoBehaviour, IDamageable
             Vector2 start = transform.position;
             Vector2 target = playerPos.position;
 
-             // Tweak as needed
-            float gravity = Mathf.Abs(Physics2D.gravity.y);
+            float direction = Mathf.Sign(playerPos.position.x - transform.position.x);
 
+            // Default: jump a short distance forward
+            target.x = transform.position.x + direction * maxHorizontalJump;
+
+            // Raycast to find platform above
+            RaycastHit2D platformAbove = Physics2D.Raycast(transform.position, Vector2.up, 10f, groundLayer);
+            if (platformAbove.collider != null)
+            {
+                float platformTopY = platformAbove.collider.bounds.max.y;
+                float playerY = playerPos.position.y;
+
+                float platformLeft = platformAbove.collider.bounds.min.x;
+                float platformRight = platformAbove.collider.bounds.max.x;
+
+                // Check if Panther is horizontally under the platform
+                bool pantherUnderPlatform = transform.position.x >= platformLeft && transform.position.x <= platformRight;
+
+                // Check if the platform is below the player
+                bool platformBelowPlayer = platformTopY < playerY;
+
+                if (pantherUnderPlatform && platformBelowPlayer)
+                {
+                    // Jump straight up to the platform
+                    target.x = transform.position.x;
+                    target.y = platformTopY + 0.1f;
+                }
+                else
+                {
+                    // Default behavior: jump forward, but Y to platform height
+                    target.y = platformTopY + 0.1f;
+                }
+            }
+
+            // Physics-based jump arc
+            float gravity = Mathf.Abs(Physics2D.gravity.y);
             Vector2 distance = target - start;
 
             float vx = distance.x / timeToTarget;
             float vy = (distance.y + 0.5f * gravity * Mathf.Pow(timeToTarget, 2)) / timeToTarget;
 
             Vector2 jumpVelocity = new Vector2(vx, vy);
-
-            rb.linearVelocity = jumpVelocity; // Apply directly for more control
+            rb.linearVelocity = jumpVelocity;
         }
     }
-
 
     private void DetectPlayer()
     {

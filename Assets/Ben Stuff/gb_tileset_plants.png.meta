@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 39ff979ff434ab54a9c0899962c84d7b
+guid: 7051deb838649ac41bb861fb4a8df023
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -43,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -111,7 +111,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 100
-        width: 50
+        width: 150
         height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -119,10 +119,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1ae05b4d409e96448a990c5e53ade830
-      internalID: 296916012
+      spriteID: 645666054aa065730800000000000000
+      internalID: 3987386220922955078
       vertices: []
       indices: 
       edges: []
@@ -131,20 +131,20 @@ TextureImporter:
       name: gb_tileset_plants_1
       rect:
         serializedVersion: 2
-        x: 50
-        y: 100
-        width: 50
-        height: 50
+        x: 0
+        y: 52
+        width: 149
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f7340bada21c9b347995356ca76dcc3a
-      internalID: -931832688
+      spriteID: 318a646835484d110800000000000000
+      internalID: 1284797287977363475
       vertices: []
       indices: 
       edges: []
@@ -153,108 +153,20 @@ TextureImporter:
       name: gb_tileset_plants_2
       rect:
         serializedVersion: 2
-        x: 100
-        y: 100
-        width: 50
-        height: 50
+        x: 101
+        y: 12
+        width: 49
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0582393e83ea3b54f9efd6246bd799e1
-      internalID: 846630301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gb_tileset_plants_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 50
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1abafe4e9c66d5c40ade189892dd0bb4
-      internalID: 1266269709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gb_tileset_plants_4
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 50
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df1a0b75ce59412479587157a0ee64d4
-      internalID: -1750942236
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gb_tileset_plants_5
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 50
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d95bfbbdec339364788b2b053b3d7897
-      internalID: -2027452305
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gb_tileset_plants_6
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09d42f7bfcfd7be46a6a78987de41ad3
-      internalID: -825105434
+      spriteID: e61e6ff1a41d76040800000000000000
+      internalID: 4640908057322643822
       vertices: []
       indices: 
       edges: []
@@ -263,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ebf8ae8ce263b3c4da9b0905756ce83d
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -271,17 +183,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":50.0,"y":50.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
-    nameFileIdTable:
-      gb_tileset_plants_0: 296916012
-      gb_tileset_plants_1: -931832688
-      gb_tileset_plants_2: 846630301
-      gb_tileset_plants_3: 1266269709
-      gb_tileset_plants_4: -1750942236
-      gb_tileset_plants_5: -2027452305
-      gb_tileset_plants_6: -825105434
+      entries: []
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -4,26 +4,21 @@ using UnityEngine;
 public class Panther : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health;
-
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private LayerMask groundLayer;
-
     [SerializeField] private int damage;
+    [SerializeField] private float knockbackForce;
     [SerializeField] private Vector2 detectionDistance = new Vector2(1f, 1f);
     [SerializeField] private float minDistanceToPlayer = 0.5f;
-    [SerializeField] private float attackInterval;
-
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private bool isGrounded;
-    [SerializeField] private bool shouldJump;
-    [SerializeField] private Transform playerPos;
     [SerializeField] private float timeToTarget = 0.6f;
     [SerializeField] private float maxHorizontalJump = 1.5f;
 
-    private bool hasDetected;
-    private Coroutine attackCoroutine;
-    private bool hasAttacked;
+    private Rigidbody2D rb;
+    private bool isGrounded;
+    private bool shouldJump;
+    private Transform playerPos;
+    private bool isChasing;
 
     private void Start()
     {
@@ -33,48 +28,14 @@ public class Panther : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (rb.linearVelocity.y <= 0f) // Only check if falling or stationary
+        if (!isChasing)
         {
-            isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1f, groundLayer);
+            DetectPlayer();
         }
         else
         {
-            isGrounded = false;
+            ChasePlayer();
         }
-
-        float direction = Mathf.Sign(playerPos.position.x - transform.position.x);
-
-        //bool isPlayerAbove = Physics2D.Raycast(transform.position, Vector2.up, 10f, 1 << playerPos.gameObject.layer);
-        bool isPlayerAbove = false;
-        float diff = playerPos.position.y - transform.position.y;
-        if (diff >= 1)
-        {
-            isPlayerAbove = true;
-        }
-
-        if (isGrounded)
-        {
-            rb.linearVelocity = new Vector2 (direction * speed, rb.linearVelocity.y);
-
-            RaycastHit2D groundInFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, groundLayer);
-            RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, groundLayer);
-            RaycastHit2D platformAbove = Physics2D.Raycast(transform.position, Vector2.up, 10f, groundLayer);
-
-            if (!groundInFront.collider && !gapAhead.collider)
-            {
-                shouldJump = true;
-            }
-            else if (isPlayerAbove && platformAbove.collider)
-            {
-                float platformTopY = platformAbove.collider.bounds.max.y;
-                if (playerPos.position.y > platformTopY)
-                {
-                    shouldJump = true;
-                }
-            }
-
-        }
-        //DetectPlayer();
     }
 
     private void FixedUpdate()
@@ -87,11 +48,8 @@ public class Panther : MonoBehaviour, IDamageable
             Vector2 target = playerPos.position;
 
             float direction = Mathf.Sign(playerPos.position.x - transform.position.x);
-
-            // Default: jump a short distance forward
             target.x = transform.position.x + direction * maxHorizontalJump;
 
-            // Raycast to find platform above
             RaycastHit2D platformAbove = Physics2D.Raycast(transform.position, Vector2.up, 10f, groundLayer);
             if (platformAbove.collider != null)
             {
@@ -101,26 +59,20 @@ public class Panther : MonoBehaviour, IDamageable
                 float platformLeft = platformAbove.collider.bounds.min.x;
                 float platformRight = platformAbove.collider.bounds.max.x;
 
-                // Check if Panther is horizontally under the platform
                 bool pantherUnderPlatform = transform.position.x >= platformLeft && transform.position.x <= platformRight;
-
-                // Check if the platform is below the player
                 bool platformBelowPlayer = platformTopY < playerY;
 
                 if (pantherUnderPlatform && platformBelowPlayer)
                 {
-                    // Jump straight up to the platform
                     target.x = transform.position.x;
                     target.y = platformTopY + 0.1f;
                 }
                 else
                 {
-                    // Default behavior: jump forward, but Y to platform height
                     target.y = platformTopY + 0.1f;
                 }
             }
 
-            // Physics-based jump arc
             float gravity = Mathf.Abs(Physics2D.gravity.y);
             Vector2 distance = target - start;
 
@@ -141,36 +93,68 @@ public class Panther : MonoBehaviour, IDamageable
         bool withinHorizontalRange = Mathf.Abs(diff.x) <= detectionDistance.x;
         bool withinVerticalRange = Mathf.Abs(diff.y) <= detectionDistance.y;
 
-        hasDetected = withinHorizontalRange && withinVerticalRange;
-        if (hasDetected && !hasAttacked)
+        if (withinHorizontalRange && withinVerticalRange)
         {
-            float distanceToPlayer = diff.magnitude;
+            isChasing = true;
+        }
+    }
 
-            if (distanceToPlayer > minDistanceToPlayer)
+    private void ChasePlayer()
+    {
+        if (rb.linearVelocity.y <= 0f)
+        {
+            isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1f, groundLayer);
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        float direction = Mathf.Sign(playerPos.position.x - transform.position.x);
+
+        bool isPlayerAbove = false;
+        float diff = playerPos.position.y - transform.position.y;
+        if (diff >= 1)
+        {
+            isPlayerAbove = true;
+        }
+
+        if (isGrounded)
+        {
+            rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
+
+            RaycastHit2D groundInFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, groundLayer);
+            RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, groundLayer);
+            RaycastHit2D platformAbove = Physics2D.Raycast(transform.position, Vector2.up, 10f, groundLayer);
+
+            if (!groundInFront.collider && !gapAhead.collider)
             {
-                transform.rotation = playerPos.position.x < transform.position.x ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;
-                float step = speed * Time.deltaTime;
-                if (attackCoroutine != null)
-                {
-                    StopCoroutine(attackCoroutine);
-                    attackCoroutine = null;
-                }
+                shouldJump = true;
             }
-            else
+            else if (isPlayerAbove && platformAbove.collider)
             {
-                attackCoroutine ??= StartCoroutine(Attack());
+                float platformTopY = platformAbove.collider.bounds.max.y;
+                if (playerPos.position.y > platformTopY)
+                {
+                    shouldJump = true;
+                }
             }
         }
     }
 
-    private IEnumerator Attack()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        hasAttacked = true;
-        IDamageable damageable = playerPos.GetComponent<IDamageable>();
-        damageable?.TakeDamage(damage);
-        yield return new WaitForSeconds(attackInterval);
-        attackCoroutine = StartCoroutine(Attack());
-        hasAttacked = false;
+        if (collision.CompareTag("Player") && isChasing)
+        {
+            Player player = collision.GetComponent<Player>();
+            if (player != null)
+            {
+                Vector2 knockbackDir = new Vector2((collision.transform.position.x - transform.position.x), 0.3f).normalized;
+                player.ApplyKnockback(knockbackDir * knockbackForce);
+                IDamageable damageable = collision.GetComponent<IDamageable>();
+                damageable?.TakeDamage(damage);
+            }
+        }
     }
 
     public void TakeDamage(int damage)

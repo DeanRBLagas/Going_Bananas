@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 528050553083498389}
   - component: {fileID: 892473730670050950}
   - component: {fileID: 8589545013785236}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PuzzleChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}

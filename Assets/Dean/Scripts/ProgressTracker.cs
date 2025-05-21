@@ -3,31 +3,42 @@ using UnityEngine;
 public class ProgressTracker : MonoBehaviour
 {
     [Header("World References")]
-    public Transform player;
-    public Transform startPoint;
-    public Transform endPoint;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform monkey;
+    [SerializeField] private Transform startPoint;
+    [SerializeField] private Transform endPoint;
 
     [Header("UI References")]
-    public RectTransform progressBar;
-    public RectTransform playerMarker;
+    [SerializeField] private RectTransform progressBar;
+    [SerializeField] private RectTransform playerMarker;
+    [SerializeField] private RectTransform monkeyMarker;
 
     private float totalDistance;
 
-    void Start()
+    private void Start()
     {
         totalDistance = Vector2.Distance(startPoint.position, endPoint.position);
+        player = FindFirstObjectByType<Player>().transform;
+        monkey = FindFirstObjectByType<MonkeyTracker>().transform;
     }
 
-    void Update()
+    private void Update()
     {
-        float playerDistance = Vector2.Distance(startPoint.position, player.position);
-        float progress = Mathf.Clamp01(playerDistance / totalDistance);
-
-        // Move the player marker across the bar
         float barWidth = progressBar.rect.width;
-        Vector2 newMarkerPos = playerMarker.anchoredPosition;
         float progressBarPos = progressBar.transform.position.x + 40;
-        newMarkerPos.x = progress * barWidth - progressBarPos;
-        playerMarker.anchoredPosition = newMarkerPos;
+
+        //Player
+        float playerDistance = Vector2.Distance(new Vector2(startPoint.position.x, 0), new Vector2(player.position.x, 0));
+        float playerProgress = Mathf.Clamp01(playerDistance / totalDistance);
+        Vector2 playerMarkerPos = playerMarker.anchoredPosition;
+        playerMarkerPos.x = playerProgress * barWidth - progressBarPos;
+        playerMarker.anchoredPosition = playerMarkerPos;
+
+        //Monkey
+        float monkeyDistance = Vector2.Distance(new Vector2(startPoint.position.x, 0), new Vector2(monkey.position.x, 0));
+        float monkeyProgress = Mathf.Clamp01(monkeyDistance / totalDistance);
+        Vector2 monkeyMarkerPos = monkeyMarker.anchoredPosition;
+        monkeyMarkerPos.x = monkeyProgress * barWidth - progressBarPos;
+        monkeyMarker.anchoredPosition = monkeyMarkerPos;
     }
 }

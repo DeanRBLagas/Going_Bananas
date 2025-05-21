@@ -62,18 +62,11 @@ public class Mosquito : MonoBehaviour, IDamageable
         hasAttacked = true;
         IDamageable damageable = playerPos.GetComponent<IDamageable>();
         damageable?.TakeDamage(damage);
-        StartCoroutine(SlowPlayer());
+        Player player = playerPos.GetComponent<Player>();
+        player.StartCoroutine(player.Slow(slowInterval));
         yield return new WaitForSeconds(attackInterval);
         attackCoroutine = StartCoroutine(Attack());
         hasAttacked = false;
-    }
-
-    private IEnumerator SlowPlayer()
-    {
-        Player player = playerPos.GetComponent<Player>();
-        player.speed = player.maxSpeed / 2;
-        yield return new WaitForSeconds(slowInterval);
-        player.speed = player.maxSpeed;
     }
 
     public void TakeDamage(int damage)

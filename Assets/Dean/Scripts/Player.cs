@@ -253,6 +253,14 @@ public class Player : MonoBehaviour, IDamageable
         knockbackTimer = knockbackDuration;
     }
 
+    public IEnumerator Slow(float slowInterval)
+    {
+        yield return this;
+        speed = maxSpeed / 2;
+        yield return new WaitForSeconds(slowInterval);
+        speed = maxSpeed;
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;

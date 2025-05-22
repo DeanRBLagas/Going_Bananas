@@ -62,7 +62,7 @@ public class Dung_Beetle : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Instantiate(moneyDrop);
+        Instantiate(moneyDrop, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

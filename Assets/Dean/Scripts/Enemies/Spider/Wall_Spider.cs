@@ -57,7 +57,6 @@ public class Wall_Spider : MonoBehaviour, IDamageable
         hasDetected = withinHorizontalRange && withinVerticalRange;
         if (hasDetected)
         {
-            //transform.rotation = playerPos.position.x < transform.position.x ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;
             attackCoroutine ??= StartCoroutine(Attack());
         }
         else if (!hasDetected && attackCoroutine != null)
@@ -109,15 +108,7 @@ public class Wall_Spider : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Instantiate(moneyDrop);
+        Instantiate(moneyDrop, transform.position, transform.rotation);
         Destroy(gameObject);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(check1Pos.position, checkSize1);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(check2Pos.position, checkSize2);
     }
 }

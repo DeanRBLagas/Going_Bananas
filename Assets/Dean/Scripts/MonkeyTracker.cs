@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MonkeyTracker : MonoBehaviour
 {
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
     [SerializeField] private float startSpeed;
+    [SerializeField] private Image monkeyMarkerColour;
 
     private Transform playerPos;
     private bool chasing;
@@ -31,10 +33,12 @@ public class MonkeyTracker : MonoBehaviour
             if (playerPos.position.x >= diff / 3 * 2)
             {
                 speed = startSpeed * 2f;
+                monkeyMarkerColour.color = Color.darkRed;
             }
             else if (playerPos.position.x >= diff / 3)
             {
                 speed = startSpeed * 1.5f;
+                monkeyMarkerColour.color = Color.orangeRed;
             }
 
             if (playerPos.position.x >= end)

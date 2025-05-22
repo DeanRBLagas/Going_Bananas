@@ -167,7 +167,7 @@ public class Panther : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Instantiate(moneyDrop);
+        Instantiate(moneyDrop, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

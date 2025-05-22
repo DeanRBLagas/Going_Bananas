@@ -195,11 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6376f70cf7c7b04783193d33ee06fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &133112367 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5757634387372216665, guid: 5dcbd7c57af05c743a308e1ccbc9757b, type: 3}
-  m_PrefabInstance: {fileID: 424226434322408299}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170732533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,7 +2451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8216488290848814828, guid: 47d87d11cb0945740a9cc6d6205249cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 8216488290848814828, guid: 47d87d11cb0945740a9cc6d6205249cd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2555,6 +2550,10 @@ PrefabInstance:
       propertyPath: startPoint
       value: 
       objectReference: {fileID: 1713212756}
+    - target: {fileID: 5539858135004723179, guid: d85021c5de3cf084a937433d043d1c72, type: 3}
+      propertyPath: monkeyMarkerColour
+      value: 
+      objectReference: {fileID: 1451817105}
     - target: {fileID: 7102550231482147884, guid: d85021c5de3cf084a937433d043d1c72, type: 3}
       propertyPath: m_Name
       value: Monke
@@ -2578,11 +2577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3756505044537612053, guid: d605f0917f4b68d4880d8c8d10889f38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.7222223
+      value: 62.22222
       objectReference: {fileID: 0}
     - target: {fileID: 3756505044537612053, guid: d605f0917f4b68d4880d8c8d10889f38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.059
+      value: 1.1240001
       objectReference: {fileID: 0}
     - target: {fileID: 3756505044537612053, guid: d605f0917f4b68d4880d8c8d10889f38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2620,10 +2619,6 @@ PrefabInstance:
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 1766415714}
-    - target: {fileID: 5650949996323983038, guid: d605f0917f4b68d4880d8c8d10889f38, type: 3}
-      propertyPath: BoundingShape2D
-      value: 
-      objectReference: {fileID: 133112367}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2728,11 +2723,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4977826045261087962, guid: a515b2982f223e64887d186f164a34c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1111145
+      value: 62.22222
       objectReference: {fileID: 0}
     - target: {fileID: 4977826045261087962, guid: a515b2982f223e64887d186f164a34c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.059
+      value: 1.1240001
       objectReference: {fileID: 0}
     - target: {fileID: 4977826045261087962, guid: a515b2982f223e64887d186f164a34c1, type: 3}
       propertyPath: m_LocalPosition.z

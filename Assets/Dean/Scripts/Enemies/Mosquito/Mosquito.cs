@@ -81,7 +81,7 @@ public class Mosquito : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Instantiate(moneyDrop);
+        Instantiate(moneyDrop, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

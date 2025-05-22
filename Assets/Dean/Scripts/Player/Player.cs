@@ -5,9 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamageable
 {
+    public int money;
+    public int maxHealth;
+    public int currentHealth;
     [SerializeField] private Rigidbody2D rb; // Store the rigidbody2D component
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
     private bool isFacingRight = true; // Check if the player is facing right
 
     [Header("Movement")]

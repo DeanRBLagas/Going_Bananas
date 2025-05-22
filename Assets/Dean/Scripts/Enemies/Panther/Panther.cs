@@ -10,7 +10,6 @@ public class Panther : MonoBehaviour, IDamageable
     [SerializeField] private int damage;
     [SerializeField] private float knockbackForce;
     [SerializeField] private Vector2 detectionDistance = new Vector2(1f, 1f);
-    [SerializeField] private float minDistanceToPlayer = 0.5f;
     [SerializeField] private float timeToTarget = 0.6f;
     [SerializeField] private float maxHorizontalJump = 1.5f;
 

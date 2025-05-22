@@ -9,12 +9,14 @@ public class ChestManager : MonoBehaviour
 
     public void OpenPuzzle()
     {
-        if (chest != null && chest.canInteract)
+        if (chest != null && chest.canInteract && chest.player.money >= chest.cost)
         {
+            chest.player.money -= chest.cost;
             chest.player.enabled = false;
             puzzleUI.SetActive(true);
             inputPuzzle.GenerateSequence();
             inputPuzzle.OnPuzzleCompleted += ExitPuzzle;
+            inputPuzzle.OnPuzzleCompleted += Reward;
         }
     }
 
@@ -34,7 +36,14 @@ public class ChestManager : MonoBehaviour
     public void ExitPuzzle()
     {
         inputPuzzle.OnPuzzleCompleted -= ExitPuzzle;
+        inputPuzzle.OnPuzzleCompleted -= Reward;
         chest.player.enabled = true;
         puzzleUI.SetActive(false);
+    }
+
+    public void Reward()
+    {
+        int reward = Random.Range(0, chest.possibleRewards.Count);
+        Instantiate(chest.possibleRewards[reward], chest.transform.position + transform.up * 1f, chest.transform.rotation);
     }
 }

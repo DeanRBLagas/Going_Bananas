@@ -1,14 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzleChest : MonoBehaviour
 {
     public bool canInteract;
     public Player player;
+    public int cost;
+    public List<GameObject> possibleRewards;
+    [SerializeField] private Vector2Int costParameters;
     private ChestManager chestManager;
 
     private void Start()
     {
         chestManager = FindFirstObjectByType<ChestManager>();
+        cost = Random.Range(costParameters.x, costParameters.y + 1);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -2,8 +2,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private int damage = 1;
+    public float speed;
+    public int damage;
+
+    public void Initialize(float speed, int damage)
+    {
+        this.speed = speed;
+        this.damage = damage;
+    }
 
     private void Start()
     {

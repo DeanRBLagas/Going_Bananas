@@ -15,6 +15,7 @@ public class Wall_Spider : MonoBehaviour, IDamageable
     [SerializeField] private Vector2 detectionDistance = new Vector2(10f, 10f);
     [SerializeField] private float attackInterval;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject moneyDrop;
     private bool hasDetected;
     private Coroutine attackCoroutine;
     private Transform playerPos;
@@ -108,8 +109,10 @@ public class Wall_Spider : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        Instantiate(moneyDrop);
         Destroy(gameObject);
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

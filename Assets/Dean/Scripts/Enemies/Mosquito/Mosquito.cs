@@ -10,6 +10,7 @@ public class Mosquito : MonoBehaviour, IDamageable
     [SerializeField] private float minDistanceToPlayer = 1.5f;
     [SerializeField] private float attackInterval;
     [SerializeField] private float slowInterval;
+    [SerializeField] private GameObject moneyDrop;
     private bool hasDetected;
     private Transform playerPos;
     private Coroutine attackCoroutine;
@@ -80,6 +81,7 @@ public class Mosquito : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        Instantiate(moneyDrop);
         Destroy(gameObject);
     }
 }

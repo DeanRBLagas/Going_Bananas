@@ -12,7 +12,7 @@ public class Panther : MonoBehaviour, IDamageable
     [SerializeField] private Vector2 detectionDistance = new Vector2(1f, 1f);
     [SerializeField] private float timeToTarget = 0.6f;
     [SerializeField] private float maxHorizontalJump = 1.5f;
-
+    [SerializeField] private GameObject moneyDrop;
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool shouldJump;
@@ -167,6 +167,7 @@ public class Panther : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        Instantiate(moneyDrop);
         Destroy(gameObject);
     }
 }

@@ -7,6 +7,7 @@ public class Dung_Beetle : MonoBehaviour, IDamageable
     [SerializeField] private Vector2 detectionDistance = new Vector2(5f, 3f);
     [SerializeField] private float attackInterval;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject moneyDrop;
     private bool hasDetected;
     private Coroutine attackCoroutine;
     private Transform playerPos;
@@ -61,6 +62,7 @@ public class Dung_Beetle : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        Instantiate(moneyDrop);
         Destroy(gameObject);
     }
 }

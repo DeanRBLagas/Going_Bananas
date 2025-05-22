@@ -105,7 +105,7 @@ MonoBehaviour:
     name: SniperRifle
     bulletPrefab: {fileID: 3976927219132049613, guid: 5c2da8a08b495154a87d19c5b2cef647, type: 3}
     bulletSpeed: 100
-    bulletDamage: 10
+    bulletDamage: 20
     attackCooldown: 3
     holdToFire: 0
 --- !u!70 &1812834223304695172

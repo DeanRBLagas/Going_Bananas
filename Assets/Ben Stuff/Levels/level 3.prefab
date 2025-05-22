@@ -6666,7 +6666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6351795115424575561}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: level 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17105,7 +17105,7 @@ GameObject:
   - component: {fileID: 8763019499585471684}
   - component: {fileID: 6769566608210633572}
   - component: {fileID: 4595318766315131402}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: treeandnormalpillars_gb_6 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32785,7 +32785,7 @@ GameObject:
   - component: {fileID: 3114633596911334933}
   - component: {fileID: 1753207965543397051}
   - component: {fileID: 8319860897020624898}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: treeandnormalpillars_gb_6 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36526,7 +36526,7 @@ GameObject:
   - component: {fileID: 3098907958388330411}
   - component: {fileID: 1695806696401515719}
   - component: {fileID: 385510450816217057}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: treeandnormalpillars_gb_6 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39400,7 +39400,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1905390962550258849, guid: 65cdbad97264d40448a2a322cd1b0a44, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

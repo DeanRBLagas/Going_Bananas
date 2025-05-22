@@ -5677,7 +5677,7 @@ GameObject:
   - component: {fileID: 7124156490998297007}
   - component: {fileID: 6653023396411176459}
   m_Layer: 0
-  m_Name: Plane 3
+  m_Name: Plane 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5729,7 +5729,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b60bb785498d7e7468d0ce59a6c03630, type: 2}
+  - {fileID: 2100000, guid: 49e1f25a0127b8b4ab366a107af148bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24283,20 +24283,21 @@ PrefabInstance:
     - target: {fileID: 1953106330994093811, guid: 65cdbad97264d40448a2a322cd1b0a44, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 8400000, guid: babc482da75a6c7459da689acf6a4e8b, type: 2}
+      objectReference: {fileID: 8400000, guid: cdcf018d768ed1144bd538dafe3196d5, type: 2}
     - target: {fileID: 1953106330994093811, guid: 65cdbad97264d40448a2a322cd1b0a44, type: 3}
       propertyPath: orthographic size
       value: 14.06254
       objectReference: {fileID: 0}
     - target: {fileID: 7654295071607602288, guid: 65cdbad97264d40448a2a322cd1b0a44, type: 3}
       propertyPath: m_Name
-      value: pixel3
+      value: pixel4
       objectReference: {fileID: 0}
     - target: {fileID: 7654295071607602288, guid: 65cdbad97264d40448a2a322cd1b0a44, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1905390962550258849, guid: 65cdbad97264d40448a2a322cd1b0a44, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 4821647098875101735}
   - component: {fileID: 5021261977006669038}
   - component: {fileID: 198124715093664874}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: treeandnormalpillars_gb_6 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7917,7 +7917,7 @@ GameObject:
   - component: {fileID: 4293608558566742669}
   - component: {fileID: 21467574952734794}
   - component: {fileID: 6885734480006661257}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: treeandnormalpillars_gb_6 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12045,7 +12045,7 @@ GameObject:
   - component: {fileID: 2980360700373271263}
   - component: {fileID: 4946946917808512525}
   - component: {fileID: 3843067887086429166}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: treeandnormalpillars_gb_6 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14957,7 +14957,7 @@ GameObject:
   - component: {fileID: 8951205489751693603}
   - component: {fileID: 6243926701099018894}
   - component: {fileID: 763186425992808050}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: treeandnormalpillars_gb_6 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29538,7 +29538,7 @@ GameObject:
   - component: {fileID: 421483755105309145}
   - component: {fileID: 3023375522087511187}
   - component: {fileID: 2196964125045329332}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: treeandnormalpillars_gb_6 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33738,7 +33738,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1905390962550258849, guid: 65cdbad97264d40448a2a322cd1b0a44, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

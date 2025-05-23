@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +7,8 @@ public class Player : MonoBehaviour, IDamageable
     public int money;
     public int maxHealth;
     public int currentHealth;
+    public GameObject gameOverUI;
+    public GameObject pauseUI;
     [SerializeField] private Rigidbody2D rb; // Store the rigidbody2D component
     private bool isFacingRight = true; // Check if the player is facing right
 
@@ -59,6 +60,8 @@ public class Player : MonoBehaviour, IDamageable
     private void Start()
     {
         currentHealth = maxHealth;
+        gameOverUI.SetActive(false);
+        pauseUI.SetActive(false);
     }
 
     private void Update()
@@ -271,9 +274,16 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    private void Die()
+    public void Die()
     {
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0;
+    }
 
+    public void PauseGame()
+    {
+        pauseUI.SetActive(true);
+        Time.timeScale = 0;
     }
 
     private void OnDrawGizmosSelected()

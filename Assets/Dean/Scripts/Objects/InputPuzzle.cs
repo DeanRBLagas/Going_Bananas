@@ -81,7 +81,7 @@ public class InputPuzzle : MonoBehaviour
             }
             else
             {
-                sequenceText.text += $"<color=black>{arrow}</color> ";
+                sequenceText.text += $"<color=white>{arrow}</color> ";
             }
         }
     }

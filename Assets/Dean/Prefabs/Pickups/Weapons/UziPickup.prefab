@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData:
-    name: AK47
+    name: Uzi
     bulletPrefab: {fileID: 3976927219132049613, guid: 5c2da8a08b495154a87d19c5b2cef647, type: 3}
     bulletSpeed: 50
     bulletDamage: 1

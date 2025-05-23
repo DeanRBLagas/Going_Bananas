@@ -35,10 +35,13 @@ public class ChestManager : MonoBehaviour
 
     public void ExitPuzzle()
     {
-        inputPuzzle.OnPuzzleCompleted -= ExitPuzzle;
-        inputPuzzle.OnPuzzleCompleted -= Reward;
-        chest.player.enabled = true;
-        puzzleUI.SetActive(false);
+        if (chest != null && chest.canInteract)
+        {
+            inputPuzzle.OnPuzzleCompleted -= ExitPuzzle;
+            inputPuzzle.OnPuzzleCompleted -= Reward;
+            chest.player.enabled = true;
+            puzzleUI.SetActive(false);
+        }
     }
 
     public void Reward()

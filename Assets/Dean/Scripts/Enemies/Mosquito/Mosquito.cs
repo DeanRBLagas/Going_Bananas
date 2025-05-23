@@ -66,7 +66,6 @@ public class Mosquito : MonoBehaviour, IDamageable
         Player player = playerPos.GetComponent<Player>();
         player.StartCoroutine(player.Slow(slowInterval));
         yield return new WaitForSeconds(attackInterval);
-        attackCoroutine = StartCoroutine(Attack());
         hasAttacked = false;
     }
 

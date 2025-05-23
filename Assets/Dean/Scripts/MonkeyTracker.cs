@@ -8,6 +8,7 @@ public class MonkeyTracker : MonoBehaviour
     [SerializeField] private Transform endPoint;
     [SerializeField] private float startSpeed;
     [SerializeField] private Image monkeyMarkerColour;
+    [SerializeField] private GameObject playerWinsUI;
 
     private Transform playerPos;
     private bool chasing;
@@ -18,6 +19,7 @@ public class MonkeyTracker : MonoBehaviour
         playerPos = FindFirstObjectByType<Player>().transform;
         speed = startSpeed;
         StartCoroutine(StartChasing());
+        playerWinsUI.SetActive(false);
     }
 
     private void Update()
@@ -43,20 +45,27 @@ public class MonkeyTracker : MonoBehaviour
 
             if (playerPos.position.x >= end)
             {
-                chasing = false;
+                PlayerWins();
             }
 
             if (transform.position.x >= playerPos.position.x)
             {
                 Player player = playerPos.GetComponent<Player>();
-                player.enabled = false;
+                player.Die();
             }
         }
     }
 
     private IEnumerator StartChasing()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         chasing = true;
+    }
+
+    private void PlayerWins()
+    {
+        chasing = false;
+        playerWinsUI.SetActive(true);
+        Time.timeScale = 0;
     }
 }

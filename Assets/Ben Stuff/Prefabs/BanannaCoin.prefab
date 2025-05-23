@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 235093653645032743}
   - component: {fileID: 4681586508049340501}
   - component: {fileID: 7462481910498941650}
+  - component: {fileID: -5153113314637844637}
+  - component: {fileID: 962706164074391526}
   m_Layer: 8
   m_Name: BanannaCoin
   m_TagString: Untagged
@@ -139,6 +141,40 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 90f6f8b7d489455468d3de45549731c6, type: 3}
+--- !u!114 &-5153113314637844637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654576679980147606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3551c760f63de5b46b8f79ad61d28052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyAmount: 5
+--- !u!135 &962706164074391526
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654576679980147606}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.01
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7488435429574725809
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +224,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 0
@@ -1127,17 +1163,17 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0.25319672
           value: 0
-          inSlope: 4.1157866
-          outSlope: 4.1157866
+          inSlope: 2.0530884
+          outSlope: 2.0530884
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.49616364
-          value: 1
-          inSlope: 0.08313465
-          outSlope: 0.08313465
+          time: 0.49048737
+          value: 0.48717868
+          inSlope: 0.08557892
+          outSlope: 0.08557892
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -1145,8 +1181,8 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0.74935913
           value: 0
-          inSlope: -3.9495173
-          outSlope: -3.9495173
+          inSlope: -1.8819306
+          outSlope: -1.8819306
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -5030,7 +5066,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 0
@@ -5969,17 +6005,17 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0.25319672
           value: 0
-          inSlope: 4.1157866
-          outSlope: 4.1157866
+          inSlope: 2.0530884
+          outSlope: 2.0530884
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.49616364
-          value: 1
-          inSlope: 0.08313465
-          outSlope: 0.08313465
+          time: 0.49048737
+          value: 0.48717868
+          inSlope: 0.08557892
+          outSlope: 0.08557892
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -5987,8 +6023,8 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0.74935913
           value: 0
-          inSlope: -3.9495173
-          outSlope: -3.9495173
+          inSlope: -1.8819306
+          outSlope: -1.8819306
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334

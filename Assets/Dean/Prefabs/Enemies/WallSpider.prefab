@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c1a0bcef2d0ae47830af07843f211c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 5
   speed: 5
   turnInterval: {x: 0.1, y: 1.5}
   check1Pos: {fileID: 716194457585918327}
@@ -120,7 +120,7 @@ MonoBehaviour:
   detectionDistance: {x: 10, y: 10}
   attackInterval: 1
   projectilePrefab: {fileID: 3835253126152527650, guid: d22026f400ee991428fdc42c13acd926, type: 3}
-  moneyDrop: {fileID: 7849176284697721917, guid: afc1ce498110a9c46aac6d61fc4e5460, type: 3}
+  moneyDrop: {fileID: 6654576679980147606, guid: 28e0d52d28bf89a4e99950771bf305df, type: 3}
 --- !u!50 &32156118340758369
 Rigidbody2D:
   serializedVersion: 5

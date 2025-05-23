@@ -10,6 +10,12 @@ public class LookAtMouse : MonoBehaviour
     private int currentWeaponIndex = 0;
     private float lastAttackTime;
     private bool isFiringHeld;
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
@@ -22,6 +28,15 @@ public class LookAtMouse : MonoBehaviour
         if (weapon.holdToFire && isFiringHeld && Time.time >= lastAttackTime + weapon.attackCooldown)
         {
             FireWeapon();
+        }
+
+        if (direction.x < transform.position.x)
+        {
+            spriteRenderer.flipY = true;
+        }
+        else
+        {
+            spriteRenderer.flipY = false;
         }
     }
 
@@ -80,6 +95,7 @@ public class LookAtMouse : MonoBehaviour
         if (index >= 0 && index < weaponTypes.Count)
         {
             currentWeaponIndex = index;
+            spriteRenderer.sprite = weaponTypes[index].sprite;
         }
     }
 

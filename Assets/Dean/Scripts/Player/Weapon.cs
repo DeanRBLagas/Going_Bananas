@@ -4,6 +4,7 @@ using UnityEngine;
 public class Weapon
 {
     public string name;
+    public Sprite sprite;
     public GameObject bulletPrefab;
     public float bulletSpeed = 10f;
     public int bulletDamage = 1;

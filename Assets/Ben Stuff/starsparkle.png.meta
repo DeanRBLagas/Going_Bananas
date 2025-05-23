@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7944e8759e76d2b4aa36ee2d9888520a
+guid: e5288c8345e84534481c4a56542f8019
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9118334800464681347
-    second: Schermafbeelding 2025-05-22 115643_0
+      213: 4694359066272778305
+    second: starsparkle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Schermafbeelding 2025-05-22 115643_0
+      name: starsparkle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 763
-        height: 763
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38997c4a035da8e70800000000000000
-      internalID: 9118334800464681347
+      spriteID: 148c251f2b6b52140800000000000000
+      internalID: 4694359066272778305
       vertices: []
       indices: 
       edges: []

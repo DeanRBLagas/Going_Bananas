@@ -120,7 +120,7 @@ MonoBehaviour:
   detectionDistance: {x: 10, y: 10}
   attackInterval: 1
   projectilePrefab: {fileID: 3835253126152527650, guid: d22026f400ee991428fdc42c13acd926, type: 3}
-  moneyDrop: {fileID: 1725359670866009725, guid: 939fd10f012cd5d44a83c1816f8e9e24, type: 3}
+  moneyDrop: {fileID: 7849176284697721917, guid: afc1ce498110a9c46aac6d61fc4e5460, type: 3}
 --- !u!50 &32156118340758369
 Rigidbody2D:
   serializedVersion: 5

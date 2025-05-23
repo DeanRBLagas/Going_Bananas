@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 4016060adadc87e42b56e0e3840cb4b8
+guid: f15126db1a6b55c4692e1a027a0034e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7945143673808131725
-    second: Plane_DefaultMaterial_BaseMap_0
+      213: 7624475058552106615
+    second: guns_1_gb_0
+  - first:
+      213: -7250994453835542632
+    second: guns_1_gb_1
+  - first:
+      213: 4622212566314709225
+    second: guns_1_gb_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Plane_DefaultMaterial_BaseMap_0
+      name: guns_1_gb_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        y: 5
+        width: 49
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37969318ced2db190800000000000000
-      internalID: -7945143673808131725
+      spriteID: 77ee2d76ba39fc960800000000000000
+      internalID: 7624475058552106615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guns_1_gb_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 10
+        width: 52
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89f0ece26fa4f5b90800000000000000
+      internalID: -7250994453835542632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guns_1_gb_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 49
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e0f88be6d5652040800000000000000
+      internalID: 4622212566314709225
       vertices: []
       indices: 
       edges: []
@@ -134,8 +184,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Plane_DefaultMaterial_BaseMap_0: -7945143673808131725
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

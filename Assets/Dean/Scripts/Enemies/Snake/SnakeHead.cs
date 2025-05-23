@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SnakeHead : MonoBehaviour, IDamageable
+public class SnakeHead : MonoBehaviour
 {
     public SnakeManager manager;
     [SerializeField] private int health;
@@ -30,18 +30,5 @@ public class SnakeHead : MonoBehaviour, IDamageable
             IDamageable damageable = collision.GetComponent<IDamageable>();
             damageable?.TakeDamage(damage);
         }
-    }
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        Destroy(gameObject);
     }
 }

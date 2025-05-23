@@ -62,7 +62,15 @@ public class Dung_Beetle : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Instantiate(moneyDrop, transform.position, transform.rotation);
+        GameObject money = Instantiate(moneyDrop, transform.position + new Vector3(0, 0, 20), transform.rotation);
+        Rigidbody moneyrb = money.GetComponent<Rigidbody>();
+
+        float x = Random.Range(-5f, 10f);
+        float y = Random.Range(1f, 10f);
+        float z = Random.Range(-5f, 10f);
+        Vector3 force = new Vector3(x, y, z);
+
+        moneyrb.AddForce(force, ForceMode.Impulse);
         Destroy(gameObject);
     }
 }

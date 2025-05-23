@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e1db71fc4316649ad4da221302dff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 2
   speed: 10
   damage: 1
   detectionDistance: {x: 7, y: 7}

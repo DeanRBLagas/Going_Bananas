@@ -299,7 +299,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 0}
   pauseUI: {fileID: 0}
   rb: {fileID: 1426961737620137098}
-  maxSpeed: 25
+  maxSpeed: 10
   speed: 10
   dashSpeed: 35
   dashCooldown: 5

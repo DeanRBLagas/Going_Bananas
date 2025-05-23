@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4878e3ecf397a8a44b9567e97091b5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 1
   speed: 5
   turnInterval: {x: 0.1, y: 1.5}
   check1Pos: {fileID: 8050597780004120936}

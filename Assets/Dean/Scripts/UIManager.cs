@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         playerHealth.text = "Health: " + player.currentHealth;
-        playerHealth.text = "Money: " + player.money;
+        playerMoney.text = "Money: " + player.money;
     }
 
     public void UnPause()

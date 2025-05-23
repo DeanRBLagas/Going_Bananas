@@ -102,14 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e1db71fc4316649ad4da221302dff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   speed: 10
   damage: 1
   detectionDistance: {x: 7, y: 7}
   minDistanceToPlayer: 0.75
   attackInterval: 0.75
   slowInterval: 3
-  moneyDrop: {fileID: 7849176284697721917, guid: afc1ce498110a9c46aac6d61fc4e5460, type: 3}
+  moneyDrop: {fileID: 6654576679980147606, guid: 28e0d52d28bf89a4e99950771bf305df, type: 3}
 --- !u!50 &5274325799286796807
 Rigidbody2D:
   serializedVersion: 5

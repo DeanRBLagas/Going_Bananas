@@ -105,7 +105,7 @@ MonoBehaviour:
   detectionDistance: {x: 7, y: 4}
   attackInterval: 1
   projectilePrefab: {fileID: 7179907021814359485, guid: 174664364b2994c489cd3320cb81999b, type: 3}
-  moneyDrop: {fileID: 7849176284697721917, guid: afc1ce498110a9c46aac6d61fc4e5460, type: 3}
+  moneyDrop: {fileID: 6654576679980147606, guid: 28e0d52d28bf89a4e99950771bf305df, type: 3}
 --- !u!60 &8841215198531621928
 PolygonCollider2D:
   m_ObjectHideFlags: 0

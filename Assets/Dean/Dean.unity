@@ -1738,7 +1738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &535063796
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2266,7 +2266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &697632095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2940,7 +2940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &831005568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7206,6 +7206,14 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 535063795}
+    - target: {fileID: 3796437072260926015, guid: 47d87d11cb0945740a9cc6d6205249cd, type: 3}
+      propertyPath: weaponTypes.Array.data[0].holdToFire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796437072260926015, guid: 47d87d11cb0945740a9cc6d6205249cd, type: 3}
+      propertyPath: weaponTypes.Array.data[0].attackCooldown
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4012518984745301752, guid: 47d87d11cb0945740a9cc6d6205249cd, type: 3}
       propertyPath: m_Size.x
       value: 0.7
@@ -7268,11 +7276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8216488290848814828, guid: 47d87d11cb0945740a9cc6d6205249cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: -7.02
       objectReference: {fileID: 0}
     - target: {fileID: 8216488290848814828, guid: 47d87d11cb0945740a9cc6d6205249cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.44
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8216488290848814828, guid: 47d87d11cb0945740a9cc6d6205249cd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7379,6 +7387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monke
       objectReference: {fileID: 0}
+    - target: {fileID: 7102550231482147884, guid: d85021c5de3cf084a937433d043d1c72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7398,11 +7410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3756505044537612053, guid: d605f0917f4b68d4880d8c8d10889f38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.2222214
+      value: -5.5822225
       objectReference: {fileID: 0}
     - target: {fileID: 3756505044537612053, guid: d605f0917f4b68d4880d8c8d10889f38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1240001
+      value: 0.4000001
       objectReference: {fileID: 0}
     - target: {fileID: 3756505044537612053, guid: d605f0917f4b68d4880d8c8d10889f38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7460,6 +7472,10 @@ PrefabInstance:
     - target: {fileID: 348787805656545079, guid: 137f6183f1235fd4d95b2dfda147bea3, type: 3}
       propertyPath: m_Name
       value: ProgressTracker
+      objectReference: {fileID: 0}
+    - target: {fileID: 348787805656545079, guid: 137f6183f1235fd4d95b2dfda147bea3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 942129301245902455, guid: 137f6183f1235fd4d95b2dfda147bea3, type: 3}
       propertyPath: m_LocalPosition.x

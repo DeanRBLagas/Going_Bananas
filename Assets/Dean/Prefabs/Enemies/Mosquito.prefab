@@ -109,7 +109,7 @@ MonoBehaviour:
   minDistanceToPlayer: 0.75
   attackInterval: 0.75
   slowInterval: 3
-  moneyDrop: {fileID: 1725359670866009725, guid: 939fd10f012cd5d44a83c1816f8e9e24, type: 3}
+  moneyDrop: {fileID: 7849176284697721917, guid: afc1ce498110a9c46aac6d61fc4e5460, type: 3}
 --- !u!50 &5274325799286796807
 Rigidbody2D:
   serializedVersion: 5

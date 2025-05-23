@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI playerHealth;
+    [SerializeField] private TextMeshProUGUI playerMoney;
     private Player player;
 
     private void Start()
@@ -17,6 +18,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         playerHealth.text = "Health: " + player.currentHealth;
+        playerHealth.text = "Money: " + player.money;
     }
 
     public void UnPause()

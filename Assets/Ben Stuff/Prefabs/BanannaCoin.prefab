@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -1, y: -0, z: -0, w: 0.0000013411044}
   m_LocalPosition: {x: -45.3, y: 30, z: 14.33}
-  m_LocalScale: {x: 75.90456, y: 75.90456, z: 10.975037}
+  m_LocalScale: {x: 34.826843, y: 34.826843, z: 5.0356116}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3371709494035685134}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 3371709494035685134}
   - component: {fileID: 3496002095918895131}
   - component: {fileID: 5641546571795438879}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.00000035835274, y: 0.70710695, z: -0.70710665, w: 0.0000003600231}
   m_LocalPosition: {x: 0.0051, y: -0.0031, z: 0.0332}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5227, y: 0.5227, z: 0.5227}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3528119665904601843}
@@ -5028,7 +5028,7 @@ GameObject:
   - component: {fileID: 5105128053680342323}
   - component: {fileID: 8260520992632421086}
   - component: {fileID: 3432831821256429696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5045,7 +5045,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.00000035835274, y: 0.70710695, z: -0.70710665, w: 0.0000003600231}
   m_LocalPosition: {x: -0.00432, y: 0.00523, z: -0.0332}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5227, y: 0.5227, z: 0.5227}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3528119665904601843}

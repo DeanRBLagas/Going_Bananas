@@ -10,4 +10,6 @@ public class Weapon
     public int bulletDamage = 1;
     public float attackCooldown = 0.5f;
     public bool holdToFire = false;
+    public int amount = 1;
+    public float spread = 0f;
 }

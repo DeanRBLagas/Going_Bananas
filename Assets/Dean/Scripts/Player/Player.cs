@@ -57,6 +57,9 @@ public class Player : MonoBehaviour, IDamageable
     private bool isKnockedBack;
     private float knockbackTimer;
 
+    [Header("Animation")]
+    [SerializeField] private Animator animator; // Store the animator component
+
     private void Start()
     {
         currentHealth = maxHealth;

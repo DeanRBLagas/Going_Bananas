@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 102331623536272984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.234, y: 0, z: 0}
+  m_LocalPosition: {x: 0.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -142,12 +142,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponTypes:
   - name: Pistol
-    sprite: {fileID: 7624475058552106615, guid: f15126db1a6b55c4692e1a027a0034e7, type: 3}
+    sprite: {fileID: -634821887, guid: af71d4f48f53caf44bd41a5fc0c45a8d, type: 3}
     bulletPrefab: {fileID: 3976927219132049613, guid: 5c2da8a08b495154a87d19c5b2cef647, type: 3}
     bulletSpeed: 20
     bulletDamage: 1
     attackCooldown: 0.2
     holdToFire: 0
+    amount: 1
+    spread: 0
+  - name: Shotgun
+    sprite: {fileID: 0}
+    bulletPrefab: {fileID: 3976927219132049613, guid: 5c2da8a08b495154a87d19c5b2cef647, type: 3}
+    bulletSpeed: 50
+    bulletDamage: 3
+    attackCooldown: 0.5
+    holdToFire: 0
+    amount: 9
+    spread: 10
   spawnPos: {fileID: 5356110424246692874}
 --- !u!58 &4209374655451529241
 CircleCollider2D:
@@ -229,15 +240,15 @@ SpriteRenderer:
   m_SortingLayerID: -900296113
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7624475058552106615, guid: f15126db1a6b55c4692e1a027a0034e7, type: 3}
+  m_Sprite: {fileID: -634821887, guid: af71d4f48f53caf44bd41a5fc0c45a8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.49, y: 0.32}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7293166258686544415
@@ -255,6 +266,7 @@ GameObject:
   - component: {fileID: 1426961737620137098}
   - component: {fileID: 4012518984745301752}
   - component: {fileID: 8431777670060632315}
+  - component: {fileID: 5790172846514067080}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -303,7 +315,7 @@ MonoBehaviour:
   speed: 10
   dashSpeed: 35
   dashCooldown: 5
-  maxJumpForce: 27
+  maxJumpForce: 20
   doubleJumpForce: 15
   maxDoubleJumps: 0
   jumpsRemaining: 0
@@ -323,12 +335,13 @@ MonoBehaviour:
     m_Bits: 128
   wallSlideSpeed: 2
   wallJumpTime: 0.1
-  wallJumpPower: {x: 30, y: 35}
+  wallJumpPower: {x: 17, y: 27}
   wallJumpTimer: 0
   isWallJumping: 0
   wallJumpDirection: 0
   isWallSliding: 0
   knockbackDuration: 0.3
+  animator: {fileID: 0}
 --- !u!212 &723011907421762692
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -725,6 +738,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.45, y: 0.9}
   m_EdgeRadius: 0
+--- !u!95 &5790172846514067080
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7293166258686544415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8a00187571978294199543fa9b7275c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8141065848364055141
 GameObject:
   m_ObjectHideFlags: 0

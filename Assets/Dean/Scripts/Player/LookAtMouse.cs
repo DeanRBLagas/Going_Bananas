@@ -66,15 +66,26 @@ public class LookAtMouse : MonoBehaviour
     }
 
     private void FireWeapon()
-    {
-        Weapon weapon = weaponTypes[currentWeaponIndex];
+{
+    Weapon weapon = weaponTypes[currentWeaponIndex];
 
-        GameObject bullet = Instantiate(weapon.bulletPrefab, spawnPos.position, transform.rotation);
+    float startAngle = -weapon.spread / 2f;
+    float angleStep = weapon.amount > 1 ? weapon.spread / (weapon.amount - 1) : 0f;
+
+    for (int i = 0; i < weapon.amount; i++)
+    {
+        float angle = startAngle + angleStep * i;
+
+        Quaternion rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z + angle);
+
+        GameObject bullet = Instantiate(weapon.bulletPrefab, spawnPos.position, rotation);
         Projectile projectile = bullet.GetComponent<Projectile>();
         projectile?.Initialize(weapon.bulletSpeed, weapon.bulletDamage);
-
-        lastAttackTime = Time.time;
     }
+
+    lastAttackTime = Time.time;
+}
+
 
     public void SwitchWeapon(InputAction.CallbackContext context)
     {

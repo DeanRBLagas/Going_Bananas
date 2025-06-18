@@ -13,6 +13,7 @@ public class ChestManager : MonoBehaviour
         {
             chest.player.money -= chest.cost;
             chest.player.enabled = false;
+            chest.canInteract = false;
             puzzleUI.SetActive(true);
             inputPuzzle.GenerateSequence();
             inputPuzzle.OnPuzzleCompleted += ExitPuzzle;
@@ -35,12 +36,16 @@ public class ChestManager : MonoBehaviour
 
     public void ExitPuzzle()
     {
-        if (chest != null && chest.canInteract)
+        if (chest != null)
         {
             inputPuzzle.OnPuzzleCompleted -= ExitPuzzle;
+            Debug.Log("Puzzle exit activated!");
             inputPuzzle.OnPuzzleCompleted -= Reward;
+            Debug.Log("Puzzle reward activated!");
             chest.player.enabled = true;
+            Debug.Log("Player enabled!");
             puzzleUI.SetActive(false);
+            Debug.Log("Puzzle UI disabled!");
         }
     }
 

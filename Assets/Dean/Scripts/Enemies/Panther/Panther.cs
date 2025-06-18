@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Panther : MonoBehaviour, IDamageable
@@ -96,6 +97,11 @@ public class Panther : MonoBehaviour, IDamageable
         {
             isChasing = true;
         }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, detectionDistance); // Draw a wire cube for the ground check area
     }
 
     private void ChasePlayer()

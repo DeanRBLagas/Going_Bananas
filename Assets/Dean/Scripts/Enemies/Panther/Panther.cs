@@ -101,12 +101,6 @@ public class Panther : MonoBehaviour, IDamageable
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, detectionDistance); // Draw a wire cube for the ground check area
-    }
-
     private void ChasePlayer()
     {
         if (rb.linearVelocity.y <= 0f)

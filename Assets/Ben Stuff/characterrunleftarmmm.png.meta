@@ -409,19 +409,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      characterrunleftarmmm_0: 2155281620191947601
-      characterrunleftarmmm_1: 4580103044329583277
-      characterrunleftarmmm_10: -8738646029849047760
-      characterrunleftarmmm_11: -8907970775874413242
-      characterrunleftarmmm_2: -2802425413423049799
-      characterrunleftarmmm_3: 1837384799173432052
-      characterrunleftarmmm_4: 6688571976937519925
-      characterrunleftarmmm_5: -8500927434046241363
-      characterrunleftarmmm_6: 3906350383034160302
-      characterrunleftarmmm_7: -7624582947468716131
-      characterrunleftarmmm_8: 1954860599317627022
-      characterrunleftarmmm_9: -4197631213908041119
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

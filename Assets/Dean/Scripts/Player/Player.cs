@@ -58,7 +58,9 @@ public class Player : MonoBehaviour, IDamageable
     private float knockbackTimer;
 
     [Header("Animation")]
-    [SerializeField] private Animator animator; // Store the animator component
+    [SerializeField] private Animator animator;
+    [SerializeField] private AnimatorClipInfo[] animatorinfo;
+    [SerializeField] private string current_animation;
 
     private void Start()
     {
@@ -89,6 +91,10 @@ public class Player : MonoBehaviour, IDamageable
             rb.linearVelocity = new Vector2(horizontalMovement * speed, rb.linearVelocity.y); // Set the velocity of the player
             Flip(); // Call the flip method to check if the player needs to change direction
         }
+        animatorinfo = this.animator.GetCurrentAnimatorClipInfo(0);
+        current_animation = animatorinfo[0].clip.name;
+
+        HandleAnimation();
     }
 
     private void Gravity()
@@ -287,6 +293,14 @@ public class Player : MonoBehaviour, IDamageable
     {
         pauseUI.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    private void HandleAnimation()
+    {
+        animator.SetBool("IsRunning", horizontalMovement != 0f && isGrounded);
+        animator.SetBool("IsIdle", horizontalMovement == 0 && isGrounded && !isWallJumping && !isWallSliding && !isDashing);
+        animator.SetBool("IsJumping", rb.linearVelocity.y > 0.1f && !isGrounded);
+        animator.SetBool("IsFalling", rb.linearVelocity.y < -0.1f && !isGrounded);
     }
 
     private void OnDrawGizmosSelected()

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b7391914f904097498f18c3ac7964d08
+guid: cc80e2d4254b48c4186e43b27b7ca205
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -126,10 +126,10 @@ TextureImporter:
         serializedVersion: 2
         x: 4
         y: 200
-        width: 89
-        height: 28
+        width: 96
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -148,10 +148,10 @@ TextureImporter:
         serializedVersion: 2
         x: 104
         y: 200
-        width: 92
-        height: 29
+        width: 96
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,9 +171,9 @@ TextureImporter:
         x: 204
         y: 200
         width: 96
-        height: 30
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -192,10 +192,10 @@ TextureImporter:
         serializedVersion: 2
         x: 4
         y: 100
-        width: 97
-        height: 29
+        width: 96
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: panthersleepidle_4
       rect:
         serializedVersion: 2
-        x: 104
+        x: 103
         y: 100
-        width: 96
-        height: 29
+        width: 97
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,10 +236,10 @@ TextureImporter:
         serializedVersion: 2
         x: 204
         y: 100
-        width: 95
-        height: 29
+        width: 96
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -258,10 +258,10 @@ TextureImporter:
         serializedVersion: 2
         x: 4
         y: 0
-        width: 95
+        width: 96
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -278,12 +278,12 @@ TextureImporter:
       name: panthersleepidle_7
       rect:
         serializedVersion: 2
-        x: 104
+        x: 105
         y: 0
-        width: 94
-        height: 30
+        width: 96
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bb9f7340f1eb81245abb2d272eab18ab
     internalID: 0
     vertices: []
     indices: 
@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      panthersleepidle_0: -131551150424602785
+      panthersleepidle_1: -8460126848421854915
+      panthersleepidle_2: 7150781731980938959
+      panthersleepidle_3: 7031042890843511486
+      panthersleepidle_4: 220043485576507207
+      panthersleepidle_5: -3602532538066357628
+      panthersleepidle_6: -1563876265681792541
+      panthersleepidle_7: -9122207776138984786
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3d8e0f9f2a5015e40824060307d691c0
+guid: 8630425fb9683214aa74ded5db0e5846
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -122,11 +122,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 204
+        y: 205
         width: 73
-        height: 96
+        height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -144,11 +144,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 116
-        y: 203
+        y: 204
         width: 65
-        height: 83
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,37 +162,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: characterlandingjump_gb_2
-      rect:
-        serializedVersion: 2
-        x: 138
-        y: 284
-        width: 29
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 19ba8ad7f201cf440800000000000000
-      internalID: 4970865884867898257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: characterlandingjump_gb_3
       rect:
         serializedVersion: 2
         x: 19
-        y: 99
+        y: 100
         width: 54
-        height: 87
+        height: 86
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -210,11 +188,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 119
-        y: 99
+        y: 100
         width: 52
-        height: 73
+        height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,7 +214,7 @@ TextureImporter:
         width: 49
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -258,7 +236,7 @@ TextureImporter:
         width: 48
         height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,7 +253,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3e4d8638bd225184fadbd2e87a45e248
     internalID: 0
     vertices: []
     indices: 
@@ -284,7 +262,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      characterlandingjump_gb_0: -2009468882123926705
+      characterlandingjump_gb_1: 1782301568670500236
+      characterlandingjump_gb_3: -2206921857439499319
+      characterlandingjump_gb_4: -964618075315514063
+      characterlandingjump_gb_5: 9172537652765418601
+      characterlandingjump_gb_6: -1490264316491754398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fdeb68ff5d129a142bde51db54b5f53a
+guid: 2fd2bf87b1b6465479c8e926b8ce7017
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -120,7 +120,7 @@ TextureImporter:
         width: 48
         height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,12 +138,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 119
-        y: 184
-        width: 51
-        height: 88
+        y: 200
+        width: 52
+        height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 16, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -162,9 +162,9 @@ TextureImporter:
         x: 16
         y: 0
         width: 75
-        height: 92
+        height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -182,11 +182,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 19
-        y: 90
+        y: 100
         width: 51
-        height: 100
+        height: 90
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -205,11 +205,11 @@ TextureImporter:
         serializedVersion: 2
         x: 116
         y: 4
-        width: 78
-        height: 182
+        width: 77
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 96, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -221,11 +221,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: characterjump_gb_5
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 101
+        width: 66
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ff62e08cd0eee4d94cf8d5fb86ffbc
+      internalID: -1609129893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1906f2a56c1ba9a42b3130708084e60a
     internalID: 0
     vertices: []
     indices: 
@@ -234,7 +256,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      characterjump_gb_5: -1609129893
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

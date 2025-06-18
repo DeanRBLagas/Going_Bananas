@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Panther : MonoBehaviour, IDamageable
@@ -13,6 +14,7 @@ public class Panther : MonoBehaviour, IDamageable
     [SerializeField] private float timeToTarget = 0.6f;
     [SerializeField] private float maxHorizontalJump = 1.5f;
     [SerializeField] private GameObject moneyDrop;
+    [SerializeField] private Animator animator;
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool shouldJump;
@@ -95,6 +97,7 @@ public class Panther : MonoBehaviour, IDamageable
         if (withinHorizontalRange && withinVerticalRange)
         {
             isChasing = true;
+            animator.SetTrigger("PlayerDetected");
         }
     }
 

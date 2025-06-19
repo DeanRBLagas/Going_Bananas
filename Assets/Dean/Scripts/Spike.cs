@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InstaKillPlayer : MonoBehaviour
+public class Spike : MonoBehaviour
 {
     public float topTolerance = 0.5f;
 

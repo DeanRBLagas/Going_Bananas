@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IDamageable
     public GameObject gameOverUI;
     public GameObject pauseUI;
     [SerializeField] private Rigidbody2D rb; // Store the rigidbody2D component
+    [SerializeField] private Transform gun;
     private bool isFacingRight = true; // Check if the player is facing right
 
     [Header("Movement")]
@@ -169,6 +170,9 @@ public class Player : MonoBehaviour, IDamageable
             Vector3 scale = transform.localScale; // Get the current scale of the player
             scale.x *= -1; // Flip the x scale to change direction
             transform.localScale = scale; // Apply the new scale to the player
+            Vector3 gunScale = gun.transform.localScale;
+            gunScale.x *= -1;
+            gun.transform.localScale = gunScale;
         }
     }
 
@@ -189,6 +193,9 @@ public class Player : MonoBehaviour, IDamageable
                 Vector3 scale = transform.localScale; // Get the current scale of the player
                 scale.x *= -1; // Flip the x scale to change direction
                 transform.localScale = scale; // Apply the new scale to the player
+                Vector3 gunScale = gun.transform.localScale;
+                gunScale.x *= -1;
+                gun.transform.localScale = gunScale;
             }
             Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); // Cancel the wall jump after the wall jump time
             return;

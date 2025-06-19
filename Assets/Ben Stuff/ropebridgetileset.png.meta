@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ropebridgetileset_0: -2812701149260149660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

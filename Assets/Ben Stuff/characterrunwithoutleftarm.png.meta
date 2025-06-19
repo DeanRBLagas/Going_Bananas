@@ -409,7 +409,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      characterrunwithoutleftarm_0: 6496976561688891031
+      characterrunwithoutleftarm_1: -2671098005903780079
+      characterrunwithoutleftarm_10: 1698721234731550977
+      characterrunwithoutleftarm_11: 8228156966319513707
+      characterrunwithoutleftarm_2: -5890436035296055353
+      characterrunwithoutleftarm_3: 8116275615886631497
+      characterrunwithoutleftarm_4: -5377810168279718369
+      characterrunwithoutleftarm_5: 7725396265091020681
+      characterrunwithoutleftarm_6: 2176779866938539659
+      characterrunwithoutleftarm_7: 4046575976309432597
+      characterrunwithoutleftarm_8: 9220066410325726952
+      characterrunwithoutleftarm_9: 1216895684987372176
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

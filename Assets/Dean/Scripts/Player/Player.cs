@@ -163,7 +163,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Flip()
     {
-        if (isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0) // Check if the player is facing right
+        if (isFacingRight && horizontalMovement < 0 && Time.timeScale != 0 || !isFacingRight && horizontalMovement > 0 && Time.timeScale != 0) // Check if the player is facing right
         {
             isFacingRight = !isFacingRight; // Set the player to face left
             //transform.rotation = horizontalMovement < 0 ? Quaternion.Euler(0, -180, 0) : Quaternion.identity;

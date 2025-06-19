@@ -9,7 +9,7 @@ public class ChestManager : MonoBehaviour
 
     public void OpenPuzzle()
     {
-        if (chest != null && chest.canInteract && chest.player.money >= chest.cost)
+        if (chest != null && chest.canInteract && chest.player.money >= chest.cost && !chest.looted)
         {
             chest.player.money -= chest.cost;
             chest.player.enabled = false;
@@ -39,13 +39,9 @@ public class ChestManager : MonoBehaviour
         if (chest != null)
         {
             inputPuzzle.OnPuzzleCompleted -= ExitPuzzle;
-            Debug.Log("Puzzle exit activated!");
             inputPuzzle.OnPuzzleCompleted -= Reward;
-            Debug.Log("Puzzle reward activated!");
             chest.player.enabled = true;
-            Debug.Log("Player enabled!");
             puzzleUI.SetActive(false);
-            Debug.Log("Puzzle UI disabled!");
         }
     }
 
@@ -53,5 +49,6 @@ public class ChestManager : MonoBehaviour
     {
         int reward = Random.Range(0, chest.possibleRewards.Count);
         Instantiate(chest.possibleRewards[reward], chest.transform.position + transform.up * 1f, chest.transform.rotation);
+        chest.looted = true;
     }
 }

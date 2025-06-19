@@ -19,6 +19,7 @@ public class LookAtMouse : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0) return;
         Vector3 mouseScreenPosition = Mouse.current.position.ReadValue();
         Vector3 direction = mouseScreenPosition - Camera.main.WorldToScreenPoint(transform.position);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -42,6 +43,7 @@ public class LookAtMouse : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0) return;
         Weapon weapon = weaponTypes[currentWeaponIndex];
 
         if (weapon.holdToFire)
@@ -66,30 +68,29 @@ public class LookAtMouse : MonoBehaviour
     }
 
     private void FireWeapon()
-{
-    Weapon weapon = weaponTypes[currentWeaponIndex];
-
-    float startAngle = -weapon.spread / 2f;
-    float angleStep = weapon.amount > 1 ? weapon.spread / (weapon.amount - 1) : 0f;
-
-    for (int i = 0; i < weapon.amount; i++)
     {
-        float angle = startAngle + angleStep * i;
+        Weapon weapon = weaponTypes[currentWeaponIndex];
 
-        Quaternion rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z + angle);
+        float startAngle = -weapon.spread / 2f;
+        float angleStep = weapon.amount > 1 ? weapon.spread / (weapon.amount - 1) : 0f;
 
-        GameObject bullet = Instantiate(weapon.bulletPrefab, spawnPos.position, rotation);
-        Projectile projectile = bullet.GetComponent<Projectile>();
-        projectile?.Initialize(weapon.bulletSpeed, weapon.bulletDamage);
+        for (int i = 0; i < weapon.amount; i++)
+        {
+            float angle = startAngle + angleStep * i;
+
+            Quaternion rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z + angle);
+
+            GameObject bullet = Instantiate(weapon.bulletPrefab, spawnPos.position, rotation);
+            Projectile projectile = bullet.GetComponent<Projectile>();
+            projectile?.Initialize(weapon.bulletSpeed, weapon.bulletDamage);
+        }
+
+        lastAttackTime = Time.time;
     }
-
-    lastAttackTime = Time.time;
-}
-
 
     public void SwitchWeapon(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        if (!context.performed || Time.timeScale == 0) return;
 
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
             SetWeapon(0);

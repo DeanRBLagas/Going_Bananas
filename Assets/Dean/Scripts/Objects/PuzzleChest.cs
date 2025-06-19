@@ -6,6 +6,7 @@ public class PuzzleChest : MonoBehaviour
     public bool canInteract;
     public Player player;
     public int cost;
+    public bool looted;
     public List<GameObject> possibleRewards;
     [SerializeField] private Vector2Int costParameters;
     private ChestManager chestManager;
